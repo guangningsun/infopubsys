@@ -25,16 +25,28 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-# 用户管理
-@admin.register(UserInfo)
-class UserInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','nick_name','user_name','weixin_openid','phone_number','auth','address']
-    search_fields =('nick_name','user_name','weixin_openid','phone_number','auth','address')
+# 厂房管理
+@admin.register(FactoryInfo)
+class FactoryInfoAdmin(ImportExportModelAdmin): 
+    list_display=['id','factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content']
+    search_fields =('factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content')
     fieldsets = [
-       ('用户数据', {'fields': ['nick_name','user_name','weixin_openid','phone_number','auth','address'], 'classes': ['']}),
+       ('用户数据', {'fields': ['factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content'], 'classes': ['']}),
     ]
     list_per_page = 15
 
+
+admin.site.register(Category , MPTTModelAdmin)
+
+# # 厂房管理
+# @admin.register(Category)
+# class CategoryInfoAdmin(MPTTModelAdmin):
+#     list_display=['id','name','parent','slug']
+#     search_fields =('name','parent','slug')
+#     fieldsets = [
+#        ('用户数据', {'fields': ['name','parent','slug'], 'classes': ['']}),
+#     ]
+#     list_per_page = 15
 
 admin.site.site_title = "泰达投资"
 admin.site.site_header = "泰达投资"
