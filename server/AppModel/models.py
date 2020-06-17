@@ -41,12 +41,12 @@ class TeamInfo(models.Model):
 class Category(MPTTModel):
       name = models.CharField(max_length=50, unique=True,verbose_name='单位/科室名称')
       parent = TreeForeignKey('self', null=True, blank=True,on_delete=models.CASCADE, related_name='children', db_index=True,verbose_name='上级部门')
-      responsibilities = models.CharField(max_length=50,verbose_name='职责',default="-")
       longitude = models.CharField(max_length=200,verbose_name='经度',default="-")
       latitude = models.CharField(max_length=200,verbose_name='纬度',default="-")
       address = models.CharField(max_length=200,verbose_name='地址',default="-")
       phone_number = models.CharField(max_length=50,verbose_name='联系电话',default="-")
       slug = models.SlugField(verbose_name='标签')
+      responsibilities = RichTextField(verbose_name='职责')
       
     
       class MPTTMeta:
