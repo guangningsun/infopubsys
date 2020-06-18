@@ -182,11 +182,11 @@ SIMPLEUI_CONFIG = {
         'icon': 'fab fa-dashcube',
         'models': [{
             'name': '公寓管理',
-            'url': 'AppModel/userinfo',
+            'url': 'AppModel/apartmentinfo',
             'icon': 'fa fa-server'
         },{
             'name': '楼宇管理',
-            'url': 'AppModel/userinfo',
+            'url': 'AppModel/buildinginfo',
             'icon': 'fa fa-server'
         },{
             'name': '厂房管理',
@@ -198,7 +198,7 @@ SIMPLEUI_CONFIG = {
             'icon': 'fa fa-server'
         },{
             'name': '链接管理',
-            'url': 'AppModel/userinfo',
+            'url': 'AppModel/urlinfo',
             'icon': 'fa fa-server'
         }]
         },{

@@ -9,11 +9,37 @@ from AppModel import *
 from ckeditor.fields import RichTextField
 
 
+#公寓类
 class ApartmentInfo(models.Model):
-      pass
+      apartment_region = models.CharField(max_length=200,verbose_name='区域')
+      apartment_title = models.CharField(max_length=200,verbose_name='标题')
+      apartment_phone = models.CharField(max_length=200,verbose_name='电话')
+      apartment_address = models.CharField(max_length=200,verbose_name='地址')
+      apartment_url = models.CharField(max_length=200,verbose_name='链接')
 
+      class Meta:
+            verbose_name = '公寓信息'
+            verbose_name_plural = '公寓信息'
+    
+      def __str__(self):
+          return self.apartment_title
+
+
+#楼宇类
 class BuildingInfo(models.Model):
-      pass
+      building_region = models.CharField(max_length=200,verbose_name='区域')
+      building_title = models.CharField(max_length=200,verbose_name='标题')
+      building_phone = models.CharField(max_length=200,verbose_name='电话')
+      building_address = models.CharField(max_length=200,verbose_name='地址')
+      building_url = models.CharField(max_length=200,verbose_name='链接')
+
+      class Meta:
+            verbose_name = '楼宇信息'
+            verbose_name_plural = '楼宇信息'
+    
+      def __str__(self):
+          return self.building_title
+
 
 # 厂房类
 class FactoryInfo(models.Model):
@@ -29,10 +55,17 @@ class FactoryInfo(models.Model):
       factory_desc = models.CharField(max_length=200,verbose_name='备注')
       factory_user = models.CharField(max_length=200,verbose_name='联系人')
       factory_phone_num = models.CharField(max_length=200,verbose_name='联系电话')
-      content = RichTextField()
+
+      class Meta:
+            verbose_name = '厂房信息'
+            verbose_name_plural = '厂房信息'
+    
+      def __str__(self):
+          return self.factory_name
+
 
 class TeamInfo(models.Model):
-      team_name = models.CharField(max_length=200,verbose_name='厂房名称')
+      team_name = models.CharField(max_length=200,verbose_name='团队名称')
       team_address = models.CharField(max_length=200,verbose_name='地点')
       team_longitude = models.CharField(max_length=200,verbose_name='经度')
       team_latitude = models.CharField(max_length=200,verbose_name='纬度')
@@ -72,23 +105,16 @@ class Category(MPTTModel):
       def __str__(self):
         return self.name
 
-class UserInfo(models.Model):
-    AUTH_CHOICES = [
-    ('0', '员工'),
-    ('1', '主管'),
-    ('2', '主任'),
-    ('3', '管理员'),
-    ]
-    nick_name = models.CharField(max_length=200,verbose_name='微信名')
-    user_name = models.CharField(max_length=200,verbose_name='用户名')
-    weixin_openid = models.CharField(max_length=200,verbose_name='微信ID')
-    phone_number = models.CharField(max_length=200,verbose_name='手机号')
-    auth = models.CharField(max_length=200, choices=AUTH_CHOICES,verbose_name='用户权限')
-    address = models.CharField(max_length=200,verbose_name='常用地址')
 
-    class Meta:
-        verbose_name = '用户信息'
-        verbose_name_plural = '用户信息'
+# 链接类
+class UrlInfo(models.Model):
+      url_name = models.CharField(max_length=200,verbose_name='链接名称')
+      url_type = models.CharField(max_length=200,verbose_name='链接类型')
+      url_address = models.CharField(max_length=200,verbose_name='链接地址')
+
+      class Meta:
+            verbose_name = '链接信息'
+            verbose_name_plural = '链接信息'
     
-    def __str__(self):
-        return self.user_name
+      def __str__(self):
+          return self.url_name

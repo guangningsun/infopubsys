@@ -28,25 +28,48 @@ logger.addHandler(handler)
 # 厂房管理
 @admin.register(FactoryInfo)
 class FactoryInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content']
-    search_fields =('factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content')
+    list_display=['id','factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num']
+    search_fields =('factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num')
     fieldsets = [
-       ('用户数据', {'fields': ['factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num','content'], 'classes': ['']}),
+       ('用户数据', {'fields': ['factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num'], 'classes': ['']}),
     ]
     list_per_page = 15
 
 
+# 公寓管理
+@admin.register(ApartmentInfo)
+class ApartmentInfoAdmin(ImportExportModelAdmin): 
+    list_display=['id','apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url']
+    search_fields =('apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url')
+    fieldsets = [
+       ('用户数据', {'fields': ['apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url'], 'classes': ['']}),
+    ]
+    list_per_page = 15
+
+
+# 楼宇管理
+@admin.register(BuildingInfo)
+class BuildingInfoAdmin(ImportExportModelAdmin): 
+    list_display=['id','building_region','building_title','building_phone','building_address','building_url']
+    search_fields =('building_region','building_title','building_phone','building_address','building_url')
+    fieldsets = [
+       ('用户数据', {'fields': ['building_region','building_title','building_phone','building_address','building_url'], 'classes': ['']}),
+    ]
+    list_per_page = 15
+
+
+# 链接管理
+@admin.register(UrlInfo)
+class UrlInfoAdmin(ImportExportModelAdmin): 
+    list_display=['id','url_name','url_type','url_address']
+    search_fields =('url_name','url_type','url_address')
+    fieldsets = [
+       ('用户数据', {'fields': ['url_name','url_type','url_address'], 'classes': ['']}),
+    ]
+    list_per_page = 15
+
 admin.site.register(Category , MPTTModelAdmin)
 
-# # 厂房管理
-# @admin.register(Category)
-# class CategoryInfoAdmin(MPTTModelAdmin):
-#     list_display=['id','name','parent','slug']
-#     search_fields =('name','parent','slug')
-#     fieldsets = [
-#        ('用户数据', {'fields': ['name','parent','slug'], 'classes': ['']}),
-#     ]
-#     list_per_page = 15
 
 admin.site.site_title = "泰达投资"
 admin.site.site_header = "泰达投资"
