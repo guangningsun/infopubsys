@@ -10,6 +10,7 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     url('admin/', admin.site.urls),
     re_path(r'^media/(?P<path>.+)$', serve, {'document_root': settings.MEDIA_ROOT}),
-    path('userinfo/', views.userinfo_detail),
+    path('get_teaminfo/', views.get_teaminfo),
+    
 ] 
  
