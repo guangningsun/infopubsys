@@ -12,5 +12,5 @@ class FactoryInfoSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = FactoryInfo
+        model = Category
         fields = ('name','parent','longitude','latitude','address','phone_number','responsibilities')
