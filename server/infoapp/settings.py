@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'mptt',
     'django_extensions',
     'werkzeug_debugger_runserver',
+    'ckeditor',
     # 'djangosecure',
 ]
 
@@ -177,11 +178,27 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 SIMPLEUI_CONFIG = {
     'menus': [{
         'app': 'AppModel',
-        'name': '全局商品管理',
+        'name': '泰达管理系统',
         'icon': 'fab fa-dashcube',
         'models': [{
-            'name': '商品类型管理',
-            'url': 'AppModel/userinfo',
+            'name': '公寓管理',
+            'url': 'AppModel/apartmentinfo',
+            'icon': 'fa fa-server'
+        },{
+            'name': '楼宇管理',
+            'url': 'AppModel/buildinginfo',
+            'icon': 'fa fa-server'
+        },{
+            'name': '厂房管理',
+            'url': 'AppModel/factoryinfo',
+            'icon': 'fa fa-server'
+        },{
+            'name': '服务团队管理',
+            'url': 'AppModel/category',
+            'icon': 'fa fa-server'
+        },{
+            'name': '链接管理',
+            'url': 'AppModel/urlinfo',
             'icon': 'fa fa-server'
         }]
         },{

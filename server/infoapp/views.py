@@ -66,6 +66,16 @@ def userinfo_detail(request):
             return Response(res_json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+# 用户注册功能
+@api_view(['GET'])
+def get_teaminfo(request):
+    if request.method == 'GET':
+        categoryset = Category.objects.all()
+        serializer = CategorySerializer(categoryset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "user_info": serializer.data }}
+        return Response(res_json)
+
 
 
 
