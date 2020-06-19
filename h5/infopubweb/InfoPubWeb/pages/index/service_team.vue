@@ -3,7 +3,7 @@
 		 <image class="bg-set" src="../../static/team_bg.png"></image>
 
 		 <view class="solid-bottom justify-center" style="padding-top: 250upx; width:100%; margin-left: 120upx;">
-		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" @tap="onClickServiceTeam"></image>
+		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" id="animat" @tap="onClickServiceTeam"></image>
 
 			<view class="flex margin-top-lg">
 				<view style="background-color: #ffffff; width: 10upx; height: 150upx;"></view>
@@ -88,5 +88,48 @@ export default {
 		padding: 130upx 80upx;
 		font-size: 50upx;
 		height: 100upx;
+	}
+	#animat{
+		position:relative;
+		animation:mymove 5s infinite;
+		-webkit-animation:mymove 5s infinite; /*Safari and Chrome*/
+		animation-direction:alternate;/*轮流反向播放动画。*/
+		animation-timing-function: ease-in-out; /*动画的速度曲线*/
+		/* Safari 和 Chrome */
+		-webkit-animation:mymove 5s infinite;
+		-webkit-animation-direction:alternate;/*轮流反向播放动画。*/
+		-webkit-animation-timing-function: ease-in-out; /*动画的速度曲线*/
+	}
+	@keyframes mymove
+	{
+		0%{
+		transform: scale(1);  /*开始为原始大小*/
+		}
+		25%{
+			transform: scale(1.03); /*放大1.06倍*/
+		}
+		50%{
+			transform: scale(1);
+		}
+		75%{
+			transform: scale(1.03);
+		}
+
+	}
+	
+	@-webkit-keyframes mymove /*Safari and Chrome*/
+	{
+		0%{
+		transform: scale(1);  /*开始为原始大小*/
+		}
+		25%{
+			transform: scale(1.03); /*放大1.06倍*/
+		}
+		50%{
+			transform: scale(1);
+		}
+		75%{
+			transform: scale(1.03);
+		}
 	}
 </style>
