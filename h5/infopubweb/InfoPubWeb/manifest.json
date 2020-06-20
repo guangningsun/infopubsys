@@ -76,7 +76,7 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "InfoPubWeb",
-        "domain" : "brilliantlife.com.cn"
+        "title" : "TEDA",
+        "domain" : "brilliantlife.com.cn:8017"
     }
 }

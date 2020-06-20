@@ -15,12 +15,13 @@
 			</view>
 		</view> -->
 
-		<view class="" style="margin-top: -80upx;">
+		<view class="">
 			<view
 				class="cu-card article"
 				style="margin-top: -10upx;"
 				v-for="(item, index) in team_list"
 				:key="index"
+				@tap="goToDetail(item)"
 			>
 				<view class="cu-item shadow padding">
 					<view class="action" style="margin-top: -20upx;">
@@ -88,9 +89,9 @@ export default {
 
 		goToDetail(item) {
 			console.log(item);
-			// uni.navigateTo({
-			// 	url: 'order_detail?orderDetailInfo=' + encodeURIComponent(JSON.stringify(item))
-			// })
+			uni.navigateTo({
+				url: 'service_team_detail?teamDetailInfo=' + encodeURIComponent(JSON.stringify(item))
+			})
 		}
 	}
 };

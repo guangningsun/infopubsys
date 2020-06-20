@@ -91,12 +91,12 @@ export default {
 	}
 	#animat{
 		position:relative;
-		animation:mymove 5s infinite;
-		-webkit-animation:mymove 5s infinite; /*Safari and Chrome*/
+		animation:mymove 3.5s infinite;
+		-webkit-animation:mymove 3.5s infinite; /*Safari and Chrome*/
 		animation-direction:alternate;/*轮流反向播放动画。*/
 		animation-timing-function: ease-in-out; /*动画的速度曲线*/
 		/* Safari 和 Chrome */
-		-webkit-animation:mymove 5s infinite;
+		-webkit-animation:mymove 3.5s infinite;
 		-webkit-animation-direction:alternate;/*轮流反向播放动画。*/
 		-webkit-animation-timing-function: ease-in-out; /*动画的速度曲线*/
 	}

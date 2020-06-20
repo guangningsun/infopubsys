@@ -8,11 +8,16 @@
             "path" : "pages/service_team_list/service_team_list",
             "style" : {}
         }
+        ,{
+            "path" : "pages/service_team_list/service_team_detail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "TEDA",
 		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationStyle": "custom",
 		"backgroundColor": "#F8F8F8"
 	},
 	"usingComponts": true
