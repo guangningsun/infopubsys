@@ -187,7 +187,8 @@ export default {
 		},
 		goToTecentMap(item) {
 			uni.openLocation({
-				address: item.name,
+				address: item.address,
+				name:item.name,
 				latitude: parseFloat(item.latitude),
 				longitude: parseFloat(item.longitude),
 				success: res => {
@@ -202,33 +203,7 @@ export default {
 		},
 		onNavigate(item) {
 			this.showModal();
-
-			// uni.showActionSheet({
-			// 	title: '请选择导航软件',
-			// 	itemList: ['百度地图', '高德地图', '腾讯地图'],
-			// 	success: e => {
-			// 		console.log(e.tapIndex);
-			// 		if (e.tapIndex == 0) {
-
-			// 		} else if (e.tapIndex == 1) {
-
-			// 		} else if (e.tapIndex == 2) {
-			// 			uni.openLocation({
-			// 				address: item.name,
-			// 				latitude: parseFloat(item.latitude),
-			// 				longitude: parseFloat(item.longitude),
-			// 				success: res => {
-			// 					console.log('succ');
-			// 					console.log(res);
-			// 				},
-			// 				fail: res => {
-			// 					console.log('fail');
-			// 					console.log(res);
-			// 				}
-			// 			});
-			// 		}
-			// 	}
-			// });
+			
 		}
 	}
 };
