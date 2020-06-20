@@ -11,6 +11,8 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     re_path(r'^media/(?P<path>.+)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('get_teaminfo/', views.get_teaminfo),
+    path('get_access_token/', views.get_access_token),
+    
     
 ] 
  

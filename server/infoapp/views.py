@@ -78,7 +78,20 @@ def get_teaminfo(request):
 
 
 
+# 获取微信token功能
 
+def get_access_token(request):
+    if request.method == 'GET':
+        APPID = 'wxed4a279d2cdba74e'
+        SECRET = '4fe8c8bd6115f0adda6b33dd9c76a110'
+        logger.debug("获取appid %s  secret %s" % (APPID,SECRET))
+        requst_data = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+APPID+"&secret="+SECRET
+        import pdb;pdb.set_trace()
+        req = requests.get(requst_data)
+        logger.debug("拼接的微信登录url 为 %s" % (requst_data ))
+        ACCESS_TOKEN = req.access_token
+        request_jsapi_data = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+ACCESS_TOKEN+"&type=jsapi"
+        return Response(request_jsapi_data)
 
 
 
