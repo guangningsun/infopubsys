@@ -3,17 +3,6 @@
 		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
 			<block slot="content">服务团队</block>
 		</cu-custom>
-		<!-- <view style="margin-top: -50upx;">
-			<view class="cu-card" v-for="(item, index) in team_list" :key="index" @tap="goToDetail(item)">
-				<view class="cu-item" >
-					<view class=" cu-list menu-avatar" >
-						<view class=" padding-left" >
-							
-						</view>
-					</view>
-				</view>
-			</view>
-		</view> -->
 
 		<view class="">
 			<view
