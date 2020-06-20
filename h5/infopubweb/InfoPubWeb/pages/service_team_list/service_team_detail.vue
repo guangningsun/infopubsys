@@ -186,19 +186,28 @@ export default {
 			});
 		},
 		goToTecentMap(item) {
-			uni.openLocation({
-				address: item.address,
-				name:item.name,
-				latitude: parseFloat(item.latitude),
-				longitude: parseFloat(item.longitude),
-				success: res => {
-					console.log('succ');
-					console.log(res);
-				},
-				fail: res => {
-					console.log('fail');
-					console.log(res);
-				}
+			// uni.openLocation({
+			// 	address: item.address,
+			// 	name:item.name,
+			// 	latitude: parseFloat(item.latitude),
+			// 	longitude: parseFloat(item.longitude),
+			// 	success: res => {
+			// 		console.log('succ');
+			// 		console.log(res);
+			// 	},
+			// 	fail: res => {
+			// 		console.log('fail');
+			// 		console.log(res);
+			// 	}
+			// });
+			console.log('wx');
+			wx.openLocation({
+			  latitude: parseFloat(item.latitude), // 纬度，浮点数，范围为90 ~ -90
+			  longitude: parseFloat(item.longitude), // 经度，浮点数，范围为180 ~ -180。
+			  name: item.name, // 位置名
+			  address: item.address, // 地址详情说明
+			  scale: 1, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			  infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
 			});
 		},
 		onNavigate(item) {
