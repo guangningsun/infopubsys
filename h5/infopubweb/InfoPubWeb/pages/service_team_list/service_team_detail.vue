@@ -19,8 +19,7 @@
 						<text class="cuIcon-titles text-purple text-lg "></text>
 						<text class="text-black text-df text-bold" style="margin-left: 5upx;">负责内容</text>
 					</view>
-					<view class="text-content margin-top margin-botom">
-						{{team_detail_info.responsibilities}}
+					<view v-html="team_detail_info.responsibilities" class="text-content margin-top margin-botom">
 					</view>
 				</view>
 			</view>
