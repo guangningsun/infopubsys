@@ -2,27 +2,11 @@
 	<view>
 		 <image class="bg-set" src="../../static/team_bg.png"></image>
 
-		 <view class="solid-bottom justify-center" style="padding-top: 250upx; width:100%; margin-left: 120upx;">
+		 <view class=" justify-center" style="padding-top: 250upx; width:100%; margin-left: 120upx;">
 		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" id="animat" @tap="onClickServiceTeam"></image>
-
-			<!-- <view class="flex margin-top-lg padding-right" >
-				<view style="background-color: #ffffff; width: 10upx; height: 165upx;"></view>
-				<view class="margin-left-sm">
-					 <view class="text-white text-xl margin-left-sm padding-right">
-						哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈{{team_list[0].name}}
-					 </view>
-					 <view class="text-white text-lg margin-left-sm margin-top-sm" style="opacity: 0.7;">
-					 	联系方式：{{team_list[0].phone_number}}
-					 </view>
-					 <view class="text-white text-lg margin-left-sm" style="opacity: 0.7;">
-					 	地址：{{team_list[0].address}}
-					 </view>
-				 </view>
-			</view> -->
-			
 		 </view>
 		 
-		 <view class="solid-bottom justify-center">
+		 <view class=" justify-center">
 			<view class="flex margin-top-lg padding-right padding-left-xl" >
 				<view style="background-color: #ffffff; width: 10upx; height: 165upx;"></view>
 				<view class="margin-left-sm">
@@ -39,15 +23,6 @@
 			</view>
 		 			
 		 </view>
-		 
-		<!-- <view class="flex solid-bottom padding justify-center" style="padding-top: 100upx; width:100%;height:100vh">
-		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;"></image>
-		 </view> -->
-		<!-- <view class="">
-			 <view class="text-white">
-			 	dddd
-			 </view>
-		 </view> -->
 	</view> 
 </template>
 
