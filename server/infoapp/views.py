@@ -89,9 +89,10 @@ def get_access_token(request):
         import pdb;pdb.set_trace()
         req = requests.get(requst_data)
         logger.debug("拼接的微信登录url 为 %s" % (requst_data ))
-        ACCESS_TOKEN = req.access_token
+        ACCESS_TOKEN = json.loads(req.text)["access_token"]
         request_jsapi_data = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+ACCESS_TOKEN+"&type=jsapi"
-        return Response(request_jsapi_data)
+        req_jsapi = requests.get(request_jsapi_data)
+        return Response(req_jsapi)
 
 
 
