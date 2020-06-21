@@ -187,7 +187,7 @@ export default {
 			var jweixin = require('jweixin-module');
 			jweixin.config({
 			  debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-			  appId: 'wx84243bcfe85ee507', // 必填，公众号的唯一标识
+			  appId: 'wxed4a279d2cdba74e', // 必填，公众号的唯一标识
 			  timestamp: this.js_sdk_info.timestamp, // 必填，生成签名的时间戳
 			  nonceStr: this.js_sdk_info.nonceStr, // 必填，生成签名的随机串
 			  signature: this.js_sdk_info.signature,// 必填，签名
@@ -248,8 +248,6 @@ export default {
 			  longitude: parseFloat(item.longitude), // 经度，浮点数，范围为180 ~ -180。
 			  name: item.name, // 位置名
 			  address: item.address, // 地址详情说明
-			  scale: 10, // 地图缩放级别,整形值,范围从1~28。默认为最大
-			  infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
 			});
 		},
 		onNavigate(item) {
