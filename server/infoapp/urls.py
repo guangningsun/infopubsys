@@ -12,6 +12,8 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.+)$', serve, {'document_root': settings.MEDIA_ROOT}),
     path('get_teaminfo/', views.get_teaminfo),
     path('get_access_token/', views.get_access_token),
+    path('get_authority_list/', views.get_authority_list),
+    path('get_authority_sub_list/<id>', views.get_authority_sub_list),
     
     
 ] 

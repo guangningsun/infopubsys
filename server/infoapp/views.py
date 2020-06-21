@@ -47,7 +47,28 @@ def _generate_json_message(flag, message):
         return HttpResponse("{\"error\":1,\"msg\":\""+message+"\"}",
                             content_type='application/json',
                             )
-                            
+
+
+# 获取所有单位信息
+@api_view(['GET'])
+def get_authority_list(request):
+    if request.method == 'GET':
+        categoryset = Category.objects.filter(level=0)
+        serializer = CategorySerializer(categoryset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "authority_info": serializer.data }}
+        return Response(res_json)
+
+
+@api_view(['GET'])
+def get_authority_sub_list(request,id):
+    if request.method == 'GET':
+        categoryset = Category.objects.filter(parent_id=id)
+        serializer = CategorySerializer(categoryset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "authority_sub_info": serializer.data }}
+        return Response(res_json)
+
 
 # 用户注册功能
 @api_view(['GET', 'POST'])
