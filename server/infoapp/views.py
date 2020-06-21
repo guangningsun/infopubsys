@@ -19,6 +19,7 @@ from rest_framework import status
 import time, datetime
 import requests,configparser
 from django.conf import settings
+import string,hashlib
 
 
 logger = logging.getLogger(__name__)
@@ -85,14 +86,56 @@ def get_access_token(request):
         APPID = 'wxed4a279d2cdba74e'
         SECRET = '4fe8c8bd6115f0adda6b33dd9c76a110'
         logger.debug("获取appid %s  secret %s" % (APPID,SECRET))
+        # 获取access token
         requst_data = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+APPID+"&secret="+SECRET
-        import pdb;pdb.set_trace()
         req = requests.get(requst_data)
         logger.debug("拼接的微信登录url 为 %s" % (requst_data ))
         ACCESS_TOKEN = json.loads(req.text)["access_token"]
+        # 根据access token获取jsapi
         request_jsapi_data = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+ACCESS_TOKEN+"&type=jsapi"
         req_jsapi = requests.get(request_jsapi_data)
-        return Response(req_jsapi)
+        # 待加密的字典
+        signature_string ={}
+        # 生成随机字符串
+        noncestr=__id_generator()
+        signature_string["noncestr"] = noncestr
+        # 获取时间戳
+        timestamp=__get_timestamp(10)
+        signature_string["timestamp"] = timestamp
+        # 访问页面的url
+        url = "https://brilliantlife.com.cn:8018/#/pages/service_team_list/service_team_detail"
+        signature_string["url"] = url
+        signature_string["req_jsapi"] = req_jsapi.text["ticket"]
+        # 对待加密字符串signature_string进行排序
+        wait4sha1_str = __dict_sorted(signature_string,False)
+        # 对待加密字符串wait4sha1_str 进行加密
+        final_signature = __sha1_signature(wait4sha1_str)
+        # 拼接返回值
+        ret_data = {"timestamp":timestamp,
+                    "nonceStr":noncestr,
+                    "signature":final_signature}
+        return Response(ret_data)
+
+
+# 生成随机数内部方法
+def __id_generator(size=16, chars=string.ascii_letters + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+# 获取当前时间戳 内部方法
+def __get_timestamp(size):
+    if size==10:
+        return int(time.time())
+    else:
+        return time.time()
+
+# 字符串进行sha1加密 内部方法
+def __sha1_signature(text):
+    return hashlib.sha1(text).hexdigest()
+
+# 字典排序算法 内部方法
+def __dict_sorted(dict_text,dec):
+    return sorted(dict_text.items(),key = lambda x:x[0],reverse = dec)
+        
 
 
 
