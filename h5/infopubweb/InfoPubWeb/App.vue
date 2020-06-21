@@ -10,9 +10,8 @@
 			// API 接口
 			api_get_team: 'get_teaminfo/',
 			api_get_access_token: 'get_access_token/',
-			api_asset: 'asset/',
-			api_claim_asset: 'claim_asset/',
-			
+			api_get_authority_list: 'get_authority_list/',
+			api_get_authority_sub_list: 'get_authority_sub_list/',
 			
 			
 			// key 值

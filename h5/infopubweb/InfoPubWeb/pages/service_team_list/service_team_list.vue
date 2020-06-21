@@ -43,31 +43,20 @@ export default {
 		this.loadData();
 	},
 	methods: {
-		loadData() {
-			this.requestWithMethod(
-				getApp().globalData.api_get_team,
-				'GET',
-				'',
-				this.successCb,
-				this.failCb,
-				this.completeCb
-			);
-		},
-
 		successCb(rsp) {
 			console.log(rsp.data);
 			if (rsp.data.error === 0) {
-				this.team_list = rsp.data.msg.user_info;
+				this.team_list = rsp.data.msg.authority_info;
 			}
 		},
 		failCb(err) {
-			console.log('get_all_order_list failed', err);
+			console.log('api_get_authority_list failed', err);
 		},
 		completeCb(rsp) {},
 
 		loadData() {
 			this.requestWithMethod(
-				getApp().globalData.api_get_team,
+				getApp().globalData.api_get_authority_list,
 				'GET',
 				'',
 				this.successCb,
