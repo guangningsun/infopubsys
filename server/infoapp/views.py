@@ -19,7 +19,7 @@ from rest_framework import status
 import time, datetime
 import requests,configparser
 from django.conf import settings
-import string,hashlib
+import string,hashlib,collections
 
 
 logger = logging.getLogger(__name__)
@@ -95,7 +95,7 @@ def get_access_token(request):
         request_jsapi_data = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+ACCESS_TOKEN+"&type=jsapi"
         req_jsapi = requests.get(request_jsapi_data)
         # 待加密的字典
-        signature_string ={}
+        signature_string = {}
         # 生成随机字符串
         noncestr=__id_generator()
         signature_string["noncestr"] = noncestr
@@ -103,18 +103,22 @@ def get_access_token(request):
         timestamp=__get_timestamp(10)
         signature_string["timestamp"] = timestamp
         # 访问页面的url
-        url = "https://brilliantlife.com.cn:8018/#/pages/service_team_list/service_team_detail"
+        #url = "https://brilliantlife.com.cn:8018/#/pages/service_team_list/service_team_detail"
+        url = "https://brilliantlife.com.cn:8018/"
         signature_string["url"] = url
-        signature_string["req_jsapi"] = req_jsapi.text["ticket"]
+        signature_string["jsapi_ticket"] = json.loads(req_jsapi.text)["ticket"]
         # 对待加密字符串signature_string进行排序
-        wait4sha1_str = __dict_sorted(signature_string,False)
+        wait4sha1_str = __dict_sorted(signature_string)
+        logger.debug("返回access token: %s jsapi: %s timstamp: %s noceStr: %s wait4sha1_str: %s" % (ACCESS_TOKEN,json.loads(req_jsapi.text)["ticket"],timestamp,noncestr,wait4sha1_str ))
         # 对待加密字符串wait4sha1_str 进行加密
         final_signature = __sha1_signature(wait4sha1_str)
         # 拼接返回值
         ret_data = {"timestamp":timestamp,
                     "nonceStr":noncestr,
                     "signature":final_signature}
-        return Response(ret_data)
+        logger.debug("返回的加密字符串 %s" % (ret_data ))
+        #return _generate_json_message(True,ret_data)
+        return HttpResponse(json.dumps(ret_data))
 
 
 # 生成随机数内部方法
@@ -130,11 +134,17 @@ def __get_timestamp(size):
 
 # 字符串进行sha1加密 内部方法
 def __sha1_signature(text):
-    return hashlib.sha1(text).hexdigest()
+    return hashlib.sha1(text.encode('utf-8')).hexdigest()
 
 # 字典排序算法 内部方法
-def __dict_sorted(dict_text,dec):
-    return sorted(dict_text.items(),key = lambda x:x[0],reverse = dec)
+def __dict_sorted(dict_text,dec=False):
+    sorted_param = json.dumps(dict_text, sort_keys=True)
+    ritems = json.loads(sorted_param,object_pairs_hook=OrderedDict).items()
+    conv_sign = ""
+    for key, value in ritems:
+        conv_sign+=str(key) + "=" + str(value) + "&"
+    final_sign = conv_sign[:-1]
+    return final_sign
         
 
 
