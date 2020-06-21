@@ -44,7 +44,7 @@
 					<view class=" margin-right">地址</view>
 					<view class="flex">
 						<text class="text-right margin-right-sm">{{ team_detail_info.address }}</text>
-						<text class="cuIcon-locationfill xl"></text>
+						<text class="cuIcon-locationfill xl text-red"></text>
 					</view>
 				</view>
 
@@ -57,7 +57,7 @@
 						<text class="text-right margin-right-sm">
 							{{ team_detail_info.phone_number }}
 						</text>
-						<text class="cuIcon-phone xl"></text>
+						<text class="cuIcon-phone xl text-olive"></text>
 					</view>
 				</view>
 			</view>
@@ -102,7 +102,8 @@
 	</view>
 </template>
 
-<script>
+<script >
+
 export default {
 	data() {
 		return {
@@ -117,13 +118,22 @@ export default {
 
 			baiduHref: '',
 
-			gaodeHref: ''
+			gaodeHref: '',
+			
+			js_sdk_info:{
+				nonceStr:'',
+				timestamp:0,
+				signature:''
+			},
 
 			// gaodeHref: https://uri.amap.com/marker?position=117.689565,39.001066&name=宝信大厦
 			// baiduHref:'http://api.map.baidu.com/marker?location=39.001066,117.689565&title=宝信大厦&content=即将前往目的地&output=html',
 		};
 	},
-	onLoad(option) {
+	onLoad(option) {	
+		
+		this.getAssetToken();
+		
 		console.log(option);
 		if (option.teamDetailInfo !== undefined) {
 			let info = JSON.parse(decodeURIComponent(option.teamDetailInfo));
@@ -167,6 +177,51 @@ export default {
 		hideModal() {
 			this.modalName = null;
 		},
+		
+		successAccessCb(rsp) {
+
+			this.js_sdk_info.timestamp = rsp.data.timestamp;
+			this.js_sdk_info.nonceStr = rsp.data.nonceStr;
+			this.js_sdk_info.signature = rsp.data.signature;
+			console.log(this.js_sdk_info);
+			var jweixin = require('jweixin-module');
+			jweixin.config({
+			  debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			  appId: 'wxed4a279d2cdba74e', // 必填，公众号的唯一标识
+			  timestamp: this.js_sdk_info.timestamp, // 必填，生成签名的时间戳
+			  nonceStr: this.js_sdk_info.nonceStr, // 必填，生成签名的随机串
+			  signature: this.js_sdk_info.signature,// 必填，签名
+			  jsApiList: ['openLocation','getLocation'] // 必填，需要使用的JS接口列表
+			});
+			
+			jweixin.ready(function(){
+			  // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+			  console.log('ready!');
+			});
+
+			jweixin.error(function(res){
+			  // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+			  console.log(res);
+			});
+
+		},
+		failAccessCb(err) {
+			console.log('api_get_access_token failed', err);
+		},
+		completeAccessCb(rsp) {
+			
+		},
+		
+		getAssetToken(){
+			this.requestWithMethod(
+				getApp().globalData.api_get_access_token,
+				'GET',
+				'',
+				this.successAccessCb,
+				this.failAccessCb,
+				this.completeAccessCb
+			);
+		},
 
 		onCall(num) {
 			console.log(num);
@@ -186,22 +241,9 @@ export default {
 			});
 		},
 		goToTecentMap(item) {
-			// uni.openLocation({
-			// 	address: item.address,
-			// 	name:item.name,
-			// 	latitude: parseFloat(item.latitude),
-			// 	longitude: parseFloat(item.longitude),
-			// 	success: res => {
-			// 		console.log('succ');
-			// 		console.log(res);
-			// 	},
-			// 	fail: res => {
-			// 		console.log('fail');
-			// 		console.log(res);
-			// 	}
-			// });
 			console.log('wx');
-			wx.openLocation({
+			var jweixin = require('jweixin-module');
+			jweixin.openLocation({
 			  latitude: parseFloat(item.latitude), // 纬度，浮点数，范围为90 ~ -90
 			  longitude: parseFloat(item.longitude), // 经度，浮点数，范围为180 ~ -180。
 			  name: item.name, // 位置名
@@ -211,7 +253,9 @@ export default {
 			});
 		},
 		onNavigate(item) {
-			this.showModal();
+			// this.showModal();
+			
+			this.goToTecentMap(item);
 			
 		}
 	}

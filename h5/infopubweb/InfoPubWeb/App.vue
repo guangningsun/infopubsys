@@ -9,8 +9,11 @@
 			
 			// API 接口
 			api_get_team: 'get_teaminfo/',
+			api_get_access_token: 'get_access_token/',
 			api_asset: 'asset/',
 			api_claim_asset: 'claim_asset/',
+			
+			
 			
 			// key 值
 			key_user_name:'key_user_name',
