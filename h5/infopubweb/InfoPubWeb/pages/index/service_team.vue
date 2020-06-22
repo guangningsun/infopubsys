@@ -8,10 +8,9 @@
 		 
 		 <view class=" justify-center">
 			<view class="flex margin-top-lg padding-right padding-left-xl" >
-				<view style="background-color: #ffffff; width: 10upx; height: 165upx;"></view>
+				<view style="background-color: #ffffff; width: 10upx; height: 200upx;"></view>
 				<view class="margin-left-sm">
 					 <view class="text-white text-xl margin-left-sm">
-						{{team_list[0].name}}
 						天津经济技术开发区
 					 </view>
 					 <view class="text-white text-lg margin-left-sm margin-top-sm" style="opacity: 0.7;">
@@ -85,12 +84,12 @@ export default {
 	}
 	#animat{
 		position:relative;
-		animation:mymove 3.5s infinite;
-		-webkit-animation:mymove 3.5s infinite; /*Safari and Chrome*/
+		animation:mymove 3s infinite;
+		-webkit-animation:mymove 3s infinite; /*Safari and Chrome*/
 		animation-direction:alternate;/*轮流反向播放动画。*/
 		animation-timing-function: ease-in-out; /*动画的速度曲线*/
 		/* Safari 和 Chrome */
-		-webkit-animation:mymove 3.5s infinite;
+		-webkit-animation:mymove 3s infinite;
 		-webkit-animation-direction:alternate;/*轮流反向播放动画。*/
 		-webkit-animation-timing-function: ease-in-out; /*动画的速度曲线*/
 	}
@@ -100,13 +99,13 @@ export default {
 		transform: scale(1);  /*开始为原始大小*/
 		}
 		25%{
-			transform: scale(1.03); /*放大1.06倍*/
+			transform: scale(1.1); /*放大1.06倍*/
 		}
 		50%{
 			transform: scale(1);
 		}
 		75%{
-			transform: scale(1.03);
+			transform: scale(1.1);
 		}
 
 	}
@@ -117,13 +116,13 @@ export default {
 		transform: scale(1);  /*开始为原始大小*/
 		}
 		25%{
-			transform: scale(1.03); /*放大1.06倍*/
+			transform: scale(1.1); /*放大1.06倍*/
 		}
 		50%{
 			transform: scale(1);
 		}
 		75%{
-			transform: scale(1.03);
+			transform: scale(1.1);
 		}
 	}
 </style>

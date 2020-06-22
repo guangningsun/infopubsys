@@ -15,20 +15,20 @@
 				</view>
 
 				<view class="margin-left margin-right">
-					<view class="cu-bar justify-start bg-white" style="margin-left: -30upx;">
+					<!-- <view class="cu-bar justify-start bg-white" style="margin-left: -30upx;">
 						<view class="action sub-title">
 							<text class="text-lg text-bold text-purple">简介</text>
 							<text class="bg-purple" style="width:2rem"></text>
 						</view>
-					</view>
-					<view
+					</view> -->
+					<!-- <view
 						v-html="team_detail_info.responsibilities"
 						class="text-content margin-top margin-botom"
-					></view>
-					<view class="action solid-top margin-top padding-top">
+					></view> -->
+					<!-- <view class="action solid-top margin-top padding-top">
 						<text class="cuIcon-title text-purple"></text>
 						<text class="text-grey text-df" style="margin-left: 5upx;">联系方式</text>
-					</view>
+					</view> -->
 
 					<view
 						class="flex justify-between margin-top"
@@ -43,7 +43,7 @@
 						</view>
 					</view>
 
-					<view
+					<!-- <view
 						class="flex justify-between margin-top"
 						@tap="onCall(team_detail_info.phone_number)"
 					>
@@ -54,14 +54,14 @@
 							</text>
 							<text class="cuIcon-phone xl text-olive"></text>
 						</view>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>
 
 		
 		
-		<view class="flex justify-center">
+		<view v-show="sub_list_info.length > 0" class="flex justify-center">
 			<view
 				class=" margin-top-sm margin-bottom-sm text-gray "
 			>
@@ -69,36 +69,34 @@
 			</view>
 		</view>
 
-		<view class="">
-			<view
-				class="cu-card article"
-				style="margin-top: -10upx;"
-				v-for="(item, index) in sub_list_info"
-				:key="index"
-			>
-				<view class="cu-item shadow padding">
-					<view class="action" style="margin-top: -20upx;">
-						<text class="cuIcon-titles text-purple text-lg "></text>
-						<text class="title" style="margin-left: -20upx;">{{ item.name }}</text>
-					</view>
-					<view class="action">
+		<view
+			class="cu-card article"
+			style="margin-top: -10upx;"
+			v-for="(item, index) in sub_list_info"
+			:key="index"
+		>
+			<view class="cu-item shadow padding">
+				<view class="action" style="margin-top: -20upx;">
+					<text class="cuIcon-titles text-purple text-lg "></text>
+					<text class="title" style="margin-left: -20upx;">{{ item.name }}</text>
+				</view>
+				<view class="action">
+					<text class="cuIcon-title text-purple"></text>
+					<text class="text-grey text-df" style="margin-left: 5upx;">负责内容</text>
+				</view>
+				<view
+					v-html="item.responsibilities"
+					class="text-content margin-top margin-botom"
+				></view>
+				<view class="flex justify-between margin-top" @tap="onCall(item.phone_number)">
+					<view class="flex">
 						<text class="cuIcon-title text-purple"></text>
-						<text class="text-grey text-df" style="margin-left: 5upx;">负责内容</text>
+						<view class="text-grey margin-right">电话</view>
 					</view>
-					<view
-						v-html="item.responsibilities"
-						class="text-content margin-top margin-botom"
-					></view>
-					<view class="flex justify-between margin-top" @tap="onCall(item.phone_number)">
-						<view class="flex">
-							<text class="cuIcon-title text-purple"></text>
-							<view class="text-grey margin-right">电话</view>
-						</view>
 
-						<view class="flex">
-							<text class="text-right margin-right-sm">{{ item.phone_number }}</text>
-							<text class="cuIcon-phone xl text-olive"></text>
-						</view>
+					<view class="flex">
+						<text class="text-right margin-right-sm">{{ item.phone_number }}</text>
+						<text class="cuIcon-phone xl text-olive"></text>
 					</view>
 				</view>
 			</view>
