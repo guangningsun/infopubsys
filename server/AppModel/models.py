@@ -83,7 +83,7 @@ class Category(MPTTModel):
       
     
       class MPTTMeta:
-        order_insertion_by = ['name']
+        order_insertion_by = ['slug']
     
       class Meta:
         unique_together = (('parent', 'slug',))
