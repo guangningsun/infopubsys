@@ -12,12 +12,13 @@
 				<view class="margin-left-sm">
 					 <view class="text-white text-xl margin-left-sm">
 						{{team_list[0].name}}
+						天津经济技术开发区
 					 </view>
 					 <view class="text-white text-lg margin-left-sm margin-top-sm" style="opacity: 0.7;">
-						联系方式：{{team_list[0].phone_number}}
+						联系方式：022-25201111
 					 </view>
 					 <view class="text-white text-lg margin-left-sm" style="opacity: 0.7;">
-						地址：{{team_list[0].address}}
+						地址：于家堡金融区融义路与金滨道交口宝信大厦
 					 </view>
 				 </view>
 			</view>
@@ -34,7 +35,7 @@ export default {
 		}
 	},
 	onLoad() {
-		this.loadData();
+		// this.loadData();
 	},
 	methods: {
 		successCb(rsp) {
