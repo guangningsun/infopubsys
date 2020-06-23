@@ -4,6 +4,9 @@ import App from './App'
 import cuCustom from './colorui/components/cu-custom.vue'
 Vue.component('cu-custom', cuCustom)
 
+import axios from 'axios';
+Vue.prototype.$axios = axios;
+
 Vue.config.productionTip = false
 
 Vue.prototype.showToast = function(msg) {
