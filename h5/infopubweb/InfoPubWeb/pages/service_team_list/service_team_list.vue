@@ -13,9 +13,9 @@
 				@tap="goToDetail(item)"
 			>
 				<view class="cu-item shadow padding">
-					<view class="action" style="margin-top: -20upx;">
+					<view class="action padding-bottom" >
 						<text class="cuIcon-titles text-purple text-lg "></text>
-						<text class="title" style="margin-left: -20upx;">{{ item.name }}</text>
+						<text class="title-sm " style="margin-left: -20upx;">{{ item.name }}</text>
 					</view>
 
 					<view class="text-content" style="margin-top: -10upx;">

@@ -2308,6 +2308,14 @@ button.cuIcon.lg {
 	padding: 0 30upx;
 }
 
+.cu-card.article>.cu-item .title-sm {
+	font-size: 30upx;
+	font-weight: 900;
+	color: #333333;
+	line-height: 40upx;
+	padding: 0 30upx;
+}
+
 .cu-card.article>.cu-item .content {
 	display: flex;
 	padding: 0 30upx;

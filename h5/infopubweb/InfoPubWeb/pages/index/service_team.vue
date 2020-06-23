@@ -11,7 +11,7 @@
 				<view style="background-color: #ffffff; width: 10upx; height: 200upx;"></view>
 				<view class="margin-left-sm">
 					 <view class="text-white text-xl margin-left-sm">
-						天津经济技术开发区
+						天津经济技术开发区管理委员会
 					 </view>
 					 <view class="text-white text-lg margin-left-sm margin-top-sm" style="opacity: 0.7;">
 						联系方式：022-25201111

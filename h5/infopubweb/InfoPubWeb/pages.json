@@ -12,6 +12,18 @@
             "path" : "pages/service_team_list/service_team_detail",
             "style" : {}
         }
+        ,{
+            "path" : "pages/invest/invest_index",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/invest/apart_building_factory_index",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/invest/apart_building_detail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
