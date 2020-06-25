@@ -21,7 +21,10 @@
 			key_wx_openid:'key_wx_openid',
 			key_user_head:'key_user_head',
 			key_user_nickname:'key_user_nickname',
-			key_phone_num:'key_phone_num'
+			key_phone_num:'key_phone_num',
+			
+			// appid
+			appid:'wxed4a279d2cdba74e'
 			
 		},
 

@@ -1,17 +1,51 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
-			<block slot="content">公寓</block>
+			<block slot="content">厂房</block>
 		</cu-custom>
-		<!-- <view class="cu-card">
+
+		<view class="cu-card article">
 			<view class="cu-item shadow">
-				
+				<view class="padding-xs flex align-center">
+					<view class="flex-sub text-center">
+						<view class="text-xl padding">
+							<text class="text-black text-bold">nnname</text>
+						</view>
+					</view>
+				</view>
+
+				<view class="margin-left margin-right">
+					<view class="cu-bar justify-start bg-white" style="margin-left: -30upx;">
+						<view class="action sub-title">
+							<text class="text-lg text-bold text-purple">简介</text>
+							<text class="bg-purple" style="width:2rem"></text>
+						</view>
+					</view>
+					<!-- <view
+						v-html="team_detail_info.responsibilities"
+						class="text-content margin-top margin-botom"
+					></view> -->
+					<view class="text-content margin-botom">
+						dfsdf
+					</view>
+					
+					<view class="margin-top">
+						<view class="padding-bottom">
+							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+0+ '.jpg'" mode="aspectFill"></image>
+						</view>
+						<view class="padding-bottom">
+							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+1+ '.jpg'" mode="aspectFill"></image>
+						</view>
+						<view class="padding-bottom">
+							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+2+ '.jpg'" mode="aspectFill"></image>
+						</view>
+						
+					</view>
+					
+				</view>
 			</view>
-		</view> -->
-		
-		<iframe id="iFrame" style="height: 1100upx; width: 100%;" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>
-	
-		
+		</view>
+
 		<view class="cu-card">
 			<view class="cu-item shadow padding">
 				<view class="action margin-botom-xl">
@@ -22,7 +56,7 @@
 				<view
 					class="flex justify-between margin-top solid-bottom padding-bottom"
 					@tap="onNavigate(detail_info)"
-
+		
 				>
 					<view class="text-dark-grey margin-right">地址</view>
 					<view class="flex">
@@ -50,6 +84,7 @@
 			</view>
 		</view>
 		
+		
 	</view>
 </template>
 
@@ -57,21 +92,59 @@
 export default {
 	data() {
 		return {
-			iframeURL: 'https://mp.weixin.qq.com/s/0E2-jdsmE5JonoPVG6ekBg',
 			
 			js_sdk_info: {
 				nonceStr: '',
 				timestamp: 0,
 				signature: ''
 			},
+
 		};
 	},
-	onLoad() {
+	onLoad(option) {
 		this.getAssetToken();
-		
-		this.getUrl(this.iframeURL);
+
+		// console.log(option);
+		// if (option.teamDetailInfo !== undefined) {
+		// 	let info = JSON.parse(decodeURIComponent(option.teamDetailInfo));
+		// 	this.team_detail_info = info;
+		// 	console.log('team detail');
+		// 	console.log(info);
+		// 	this.longitude = info.longitude;
+		// 	this.latitude = info.latitude;
+		// 	this.loc_name = info.name;
+
+			
+
+		// 	console.log(this.baiduHref);
+		// }
+
+		// this.loadData();
 	},
 	methods: {
+
+		successCb(rsp) {
+			console.log(rsp.data);
+			if (rsp.data.error === 0) {
+				this.sub_list_info = rsp.data.msg.authority_sub_info;
+			}
+		},
+		failCb(err) {
+			console.log('api_get_authority_list failed', err);
+		},
+		completeCb(rsp) {},
+
+		loadData() {
+			this.requestWithMethod(
+				getApp().globalData.api_get_authority_sub_list + this.team_detail_info.id,
+				'GET',
+				'',
+				this.successCb,
+				this.failCb,
+				this.completeCb
+			);
+		},
+
 		successAccessCb(rsp) {
 			this.js_sdk_info.timestamp = rsp.data.timestamp;
 			this.js_sdk_info.nonceStr = rsp.data.nonceStr;
@@ -87,12 +160,12 @@ export default {
 				scale: 22, // 地图缩放级别,整形值,范围从1~28。默认为最大
 				jsApiList: ['openLocation', 'getLocation'] // 必填，需要使用的JS接口列表
 			});
-		
+
 			jweixin.ready(function() {
 				// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 				console.log('ready!');
 			});
-		
+
 			jweixin.error(function(res) {
 				// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
 				console.log(res);
@@ -102,7 +175,7 @@ export default {
 			console.log('api_get_access_token failed', err);
 		},
 		completeAccessCb(rsp) {},
-		
+
 		getAssetToken() {
 			this.requestWithMethod(
 				getApp().globalData.api_get_access_token,
@@ -113,18 +186,18 @@ export default {
 				this.completeAccessCb
 			);
 		},
-		
+
 		onCall(num) {
 			console.log(num);
 			uni.makePhoneCall({
 				// 号码
 				phoneNumber: num,
-		
+
 				// 成功回调
 				success: res => {
 					console.log('调用成功!');
 				},
-		
+
 				// 失败回调
 				fail: res => {
 					console.log('调用失败!');
@@ -143,61 +216,15 @@ export default {
 		},
 		onNavigate(item) {
 			// this.showModal();
-		
+
 			this.goToTecentMap(item);
-		},
-		
-		getUrl(URL) {
-			let http = window.location.protocol === 'http:' ? 'http:' : 'https:';
-			//调用跨域API
-			let realurl = http + '//cors-anywhere.herokuapp.com/' + URL;
-			this.$axios.get(realurl).then(
-				response => {
-					// console.log(response)
-					let html = response.data;
-					html = html
-						.replace(/data-src/g, 'src')
-						.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/g, '')
-						.replace(/https/g, 'http');
-					//let html_src = 'data:text/html;charset=utf-8,' + html;
-					let html_src = html;
-					let iframe = document.getElementById('iFrame');
-					iframe.src = html_src;
-					var doc = iframe.contentDocument || iframe.document;
-					doc.write(html_src);
-					doc.getElementById('js_content').style.visibility = 'visible';
-					//var doc = iframe.contentDocument || iframe.document;
-					//doc.body.innerHTML = html_src;
-					//iframe.document.getElementsByTagName('body').innerHTML = html_src;
-				},
-				err => {
-					console.log(err);
-				}
-			);
-			
-			// let http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-			//      let realurl = http + '//cors-anywhere.herokuapp.com/' + URL;
-			//      this.$axios.get(realurl).then((response)=>{
-			//        console.log(response)
-			//        let html = response.data;
-			//        html = html.replace(/data-src/g, "src")
-			//                   .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/g, '')
-			//                   .replace(/https/g,'http');
-			//        let html_src =html;
-			//        let iframe = document.getElementById('iFrame');
-			//        iframe.src = html_src;
-			// 	   var doc = iframe.contentDocument || iframe.document;
-			// 		doc.write(html_src);
-			// 		doc.getElementById('js_content').style.visibility = 'visible';
-			//      },(err)=>{console.log(err);});
 		}
 	}
 };
 </script>
 
 <style>
-#iframeContain {
-	width: 100%;
-	height: 100%;
+a {
+	display: block; //将a设置为块级元素
 }
 </style>

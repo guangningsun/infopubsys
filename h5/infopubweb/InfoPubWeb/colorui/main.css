@@ -910,6 +910,12 @@ button.cuIcon.lg {
 	font-size: 2.5em;
 }
 
+.cu-avatar.xxl {
+	width: 150upx;
+	height: 128upx;
+	font-size: 2.5em;
+}
+
 .cu-avatar .avatar-text {
 	font-size: 0.4em;
 }
@@ -3965,6 +3971,12 @@ scroll-view.cu-steps .cu-item {
 .line-grey,
 .lines-grey {
 	color: #8799a3;
+}
+
+.text-dark-grey,
+.line-dark-grey,
+.lines-dark-grey {
+	color: #626566;
 }
 
 .text-gray,

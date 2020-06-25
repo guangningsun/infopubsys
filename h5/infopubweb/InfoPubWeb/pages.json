@@ -24,6 +24,10 @@
             "path" : "pages/invest/apart_building_detail",
             "style" : {}
         }
+        ,{
+            "path" : "pages/invest/factory_detail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
