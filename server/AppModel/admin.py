@@ -28,10 +28,10 @@ logger.addHandler(handler)
 # 厂房管理
 @admin.register(FactoryInfo)
 class FactoryInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','title','title_img','latitude','longitude','tel','address','article_url']
-    search_fields =('title','title_img','latitude','longitude','tel','address','article_url')
+    list_display=['id','title','title_img','latitude','longitude','tel','address','article_url','info']
+    search_fields =('title','title_img','latitude','longitude','tel','address','article_url','info')
     fieldsets = [
-       ('用户数据', {'fields': ['title','title_img','latitude','longitude','tel','address','article_url'], 'classes': ['']}),
+       ('用户数据', {'fields': ['title','title_img','latitude','longitude','tel','address','article_url','info'], 'classes': ['']}),
     ]
     list_per_page = 15
 
