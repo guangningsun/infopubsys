@@ -59,6 +59,7 @@ class FactoryInfo(models.Model):
       address = models.CharField(max_length=200,verbose_name='地址')
       article_url = models.CharField(max_length=200,verbose_name='链接')
       info = models.CharField(max_length=200,verbose_name='厂房信息')
+      name = models.CharField(max_length=200,verbose_name='厂房名称')
 
       class Meta:
             verbose_name = '厂房信息'
