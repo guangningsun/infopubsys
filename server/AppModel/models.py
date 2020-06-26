@@ -40,6 +40,8 @@ class BuildingInfo(models.Model):
       def __str__(self):
           return self.building_title
 
+class BannerInfo(models.Model):
+      banner_image = models.ImageField(u'轮播图片',null=True, blank=True, upload_to='banner_image')
 
 # 厂房类
 class FactoryInfo(models.Model):

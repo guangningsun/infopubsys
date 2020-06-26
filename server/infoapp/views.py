@@ -101,12 +101,45 @@ def get_teaminfo(request):
 
 # 获取公寓信息
 @api_view(['GET'])
-def get_all_property_info(request):
+def get_apartment_info(request):
     if request.method == 'GET':
         apartmentset = ApartmentInfo.objects.all()
         serializer = ApartmentSerializer(apartmentset, many=True)
         res_json = {"error": 0,"msg": {
                     "apartment_info": serializer.data }}
+        return Response(res_json)
+
+
+# 获取楼宇信息
+@api_view(['GET'])
+def get_building_info(request):
+    if request.method == 'GET':
+        buildingset = BuildingInfo.objects.all()
+        serializer = BuildingSerializer(buildingset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "building_info": serializer.data }}
+        return Response(res_json)
+
+
+# 获取厂房信息
+@api_view(['GET'])
+def get_factory_info(request):
+    if request.method == 'GET':
+        factoryset = FactoryInfo.objects.all()
+        serializer = FactorySerializer(factoryset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "factory_info": serializer.data }}
+        return Response(res_json)
+
+
+# 获取轮播图信息
+@api_view(['GET'])
+def get_banner_info(request):
+    if request.method == 'GET':
+        bannerset = BannerInfo.objects.all()
+        serializer = BannerInfoSerializer(bannerset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "banner_info": serializer.data }}
         return Response(res_json)
 
 
