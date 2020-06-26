@@ -14,6 +14,8 @@ urlpatterns = [
     path('get_access_token/', views.get_access_token),
     path('get_authority_list/', views.get_authority_list),
     path('get_authority_sub_list/<id>', views.get_authority_sub_list),
+    path('get_all_property_info/', views.get_all_property_info),
+    
     
     
 ] 

@@ -14,3 +14,10 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id','name','parent','longitude','latitude','address','phone_number','responsibilities')
+
+
+class ApartmentSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = ApartmentInfo
+        fields = ('id','apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url')

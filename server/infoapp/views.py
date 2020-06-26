@@ -99,9 +99,18 @@ def get_teaminfo(request):
         return Response(res_json)
 
 
+# 获取公寓信息
+@api_view(['GET'])
+def get_all_property_info(request):
+    if request.method == 'GET':
+        apartmentset = ApartmentInfo.objects.all()
+        serializer = ApartmentSerializer(apartmentset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "apartment_info": serializer.data }}
+        return Response(res_json)
+
 
 # 获取微信token功能
-
 def get_access_token(request):
     if request.method == 'GET':
         APPID = 'wxed4a279d2cdba74e'
@@ -166,7 +175,6 @@ def __dict_sorted(dict_text,dec=False):
         conv_sign+=str(key) + "=" + str(value) + "&"
     final_sign = conv_sign[:-1]
     return final_sign
-        
 
 
 
