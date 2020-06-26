@@ -27,14 +27,14 @@ class BuildingSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = BuildingInfo
-        fields = ('id','building_region','building_title','building_phone','building_address','building_url')
+        fields = ('id','building_region','title','title_img','latitude','longitude','tel','address','article_url')
 
 
 class FactorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FactoryInfo
-        fields = ('id','factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num')
+        fields = ('id','title','title_img','latitude','longitude','tel','address','article_url')
 
 
 class BannerInfoSerializer(serializers.ModelSerializer):

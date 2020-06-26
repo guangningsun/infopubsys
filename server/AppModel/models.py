@@ -25,48 +25,46 @@ class ApartmentInfo(models.Model):
             verbose_name_plural = '公寓信息'
     
       def __str__(self):
-          return self.apartment_title
+          return self.title
 
 
 #楼宇类
 class BuildingInfo(models.Model):
       building_region = models.CharField(max_length=200,verbose_name='区域')
-      building_title = models.CharField(max_length=200,verbose_name='标题')
-      building_phone = models.CharField(max_length=200,verbose_name='电话')
-      building_address = models.CharField(max_length=200,verbose_name='地址')
-      building_url = models.CharField(max_length=200,verbose_name='链接')
+      title = models.CharField(max_length=200,verbose_name='标题')
+      title_img = models.ImageField(u'标题图片',null=True, blank=True, upload_to='title_image')
+      latitude  = models.CharField(max_length=200,verbose_name='经度')
+      longitude  = models.CharField(max_length=200,verbose_name='纬度')
+      tel = models.CharField(max_length=200,verbose_name='电话')
+      address = models.CharField(max_length=200,verbose_name='地址')
+      article_url = models.CharField(max_length=200,verbose_name='链接')
 
       class Meta:
             verbose_name = '楼宇信息'
             verbose_name_plural = '楼宇信息'
     
       def __str__(self):
-          return self.building_title
+          return self.title
 
 class BannerInfo(models.Model):
       banner_image = models.ImageField(u'轮播图片',null=True, blank=True, upload_to='banner_image')
 
 # 厂房类
 class FactoryInfo(models.Model):
-      factory_name = models.CharField(max_length=200,verbose_name='厂房名称')
-      factory_area = models.CharField(max_length=200,verbose_name='建筑面积m2')
-      factory_footprint = models.CharField(max_length=200,verbose_name='占地面积m2')
-      factory_address = models.CharField(max_length=200,verbose_name='地点')
-      factory_longitude = models.CharField(max_length=200,verbose_name='经度')
-      factory_latitude = models.CharField(max_length=200,verbose_name='纬度')
-      factory_level = models.CharField(max_length=200,verbose_name='层数')
-      factory_high = models.CharField(max_length=200,verbose_name='层高')
-      factory_finish_time = models.CharField(max_length=200,verbose_name='建成时间')
-      factory_desc = models.CharField(max_length=200,verbose_name='备注')
-      factory_user = models.CharField(max_length=200,verbose_name='联系人')
-      factory_phone_num = models.CharField(max_length=200,verbose_name='联系电话')
+      title = models.CharField(max_length=200,verbose_name='标题')
+      title_img = models.ImageField(u'标题图片',null=True, blank=True, upload_to='title_image')
+      latitude  = models.CharField(max_length=200,verbose_name='经度')
+      longitude  = models.CharField(max_length=200,verbose_name='纬度')
+      tel = models.CharField(max_length=200,verbose_name='电话')
+      address = models.CharField(max_length=200,verbose_name='地址')
+      article_url = models.CharField(max_length=200,verbose_name='链接')
 
       class Meta:
             verbose_name = '厂房信息'
             verbose_name_plural = '厂房信息'
     
       def __str__(self):
-          return self.factory_name
+          return self.title
 
 
 class TeamInfo(models.Model):

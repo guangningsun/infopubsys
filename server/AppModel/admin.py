@@ -28,10 +28,10 @@ logger.addHandler(handler)
 # 厂房管理
 @admin.register(FactoryInfo)
 class FactoryInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num']
-    search_fields =('factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num')
+    list_display=['id','title','title_img','latitude','longitude','tel','address','article_url']
+    search_fields =('title','title_img','latitude','longitude','tel','address','article_url')
     fieldsets = [
-       ('用户数据', {'fields': ['factory_name','factory_area','factory_footprint','factory_address','factory_longitude','factory_latitude','factory_level','factory_high','factory_finish_time','factory_desc','factory_user','factory_phone_num'], 'classes': ['']}),
+       ('用户数据', {'fields': ['title','title_img','latitude','longitude','tel','address','article_url'], 'classes': ['']}),
     ]
     list_per_page = 15
 
@@ -60,10 +60,10 @@ class BannerInfoAdmin(ImportExportModelAdmin):
 # 楼宇管理
 @admin.register(BuildingInfo)
 class BuildingInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','building_region','building_title','building_phone','building_address','building_url']
-    search_fields =('building_region','building_title','building_phone','building_address','building_url')
+    list_display=['id','building_region','title','title_img','latitude','longitude','tel','address','article_url']
+    search_fields =('building_region','title','title_img','latitude','longitude','tel','address','article_url')
     fieldsets = [
-       ('用户数据', {'fields': ['building_region','building_title','building_phone','building_address','building_url'], 'classes': ['']}),
+       ('用户数据', {'fields': ['building_region','title','title_img','latitude','longitude','tel','address','article_url'], 'classes': ['']}),
     ]
     list_per_page = 15
 
