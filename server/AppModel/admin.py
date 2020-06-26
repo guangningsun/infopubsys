@@ -47,10 +47,10 @@ class ApartmentInfoAdmin(ImportExportModelAdmin):
     list_per_page = 15
 
 # 公寓管理
-@admin.register(ApartmentInfo)
+@admin.register(BannerInfo)
 class BannerInfoAdmin(ImportExportModelAdmin): 
     list_display=['id','banner_image',]
-    search_fields =('banner_image')
+    search_fields =('banner_image',)
     fieldsets = [
        ('用户数据', {'fields': ['banner_image'], 'classes': ['']}),
     ]

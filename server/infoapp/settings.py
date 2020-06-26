@@ -200,6 +200,10 @@ SIMPLEUI_CONFIG = {
             'name': '链接管理',
             'url': 'AppModel/urlinfo',
             'icon': 'fa fa-server'
+        },{
+            'name': '轮播图管理',
+            'url': 'AppModel/bannerinfo',
+            'icon': 'fa fa-server'
         }]
         },{
         'app': 'auth',
