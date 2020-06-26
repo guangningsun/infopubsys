@@ -9,7 +9,8 @@
 				<view class="padding-xs flex align-center">
 					<view class="flex-sub text-center">
 						<view class="text-xl padding">
-							<text class="text-black text-bold">nnname</text>
+							<text class="text-black text-bold">{{detail_info.name}}</text>
+							<!-- <text class="text-black text-bold">xxx厂</text> -->
 						</view>
 					</view>
 				</view>
@@ -21,23 +22,24 @@
 							<text class="bg-purple" style="width:2rem"></text>
 						</view>
 					</view>
-					<!-- <view
-						v-html="team_detail_info.responsibilities"
-						class="text-content margin-top margin-botom"
-					></view> -->
+					
 					<view class="text-content margin-botom">
-						dfsdf
+						{{detail_info.info}}
 					</view>
 					
 					<view class="margin-top">
-						<view class="padding-bottom">
+						<!-- view class="padding-bottom-sm">
 							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+0+ '.jpg'" mode="aspectFill"></image>
 						</view>
-						<view class="padding-bottom">
-							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+1+ '.jpg'" mode="aspectFill"></image>
+						<view class="padding-bottom-sm">
+							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+1+ '.jpg'" mode="aspectFit"></image>
 						</view>
-						<view class="padding-bottom">
-							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+2+ '.jpg'" mode="aspectFill"></image>
+						<view class="padding-bottom-sm">
+							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+2+ '.jpg'" mode="aspectFit"></image>
+						</view> -->
+						
+						<view class="padding-bottom-sm"  v-for="(item,index) in detail_info.img_list">
+							<image :src="domain + item" mode="aspectFit"></image>
 						</view>
 						
 					</view>
@@ -61,8 +63,7 @@
 					<view class="text-dark-grey margin-right">地址</view>
 					<view class="flex">
 						<text class="text-right margin-right-sm">
-							<!-- {{ team_detail_info.address }} -->
-							ddddd
+							{{ detail_info.address }}
 						</text>
 						<text class="cuIcon-locationfill xl text-red"></text>
 					</view>
@@ -70,13 +71,12 @@
 				
 				<view
 					class="flex justify-between margin-top"
-					@tap="onCall(detail_info.phone_number)"
+					@tap="onCall(detail_info.tel)"
 				>
 					<view class="text-dark-grey margin-right">电话</view>
 					<view class="flex">
 						<text class="text-right margin-right-sm">
-							<!-- {{ team_detail_info.phone_number }} -->
-							189939399
+							{{ detail_info.tel }}
 						</text>
 						<text class="cuIcon-phone xl text-olive"></text>
 					</view>
@@ -98,52 +98,26 @@ export default {
 				timestamp: 0,
 				signature: ''
 			},
+			
+			domain: getApp().globalData.domain,
+			
+			detail_info: null,
 
 		};
 	},
 	onLoad(option) {
 		this.getAssetToken();
 
-		// console.log(option);
-		// if (option.teamDetailInfo !== undefined) {
-		// 	let info = JSON.parse(decodeURIComponent(option.teamDetailInfo));
-		// 	this.team_detail_info = info;
-		// 	console.log('team detail');
-		// 	console.log(info);
-		// 	this.longitude = info.longitude;
-		// 	this.latitude = info.latitude;
-		// 	this.loc_name = info.name;
+		console.log(option);
+		if (option.factoryDetailInfo !== undefined) {
+			let info = JSON.parse(decodeURIComponent(option.factoryDetailInfo));
+			this.detail_info = info;
+			console.log('factory detail');
+			console.log(info);
+		}
 
-			
-
-		// 	console.log(this.baiduHref);
-		// }
-
-		// this.loadData();
 	},
 	methods: {
-
-		successCb(rsp) {
-			console.log(rsp.data);
-			if (rsp.data.error === 0) {
-				this.sub_list_info = rsp.data.msg.authority_sub_info;
-			}
-		},
-		failCb(err) {
-			console.log('api_get_authority_list failed', err);
-		},
-		completeCb(rsp) {},
-
-		loadData() {
-			this.requestWithMethod(
-				getApp().globalData.api_get_authority_sub_list + this.team_detail_info.id,
-				'GET',
-				'',
-				this.successCb,
-				this.failCb,
-				this.completeCb
-			);
-		},
 
 		successAccessCb(rsp) {
 			this.js_sdk_info.timestamp = rsp.data.timestamp;

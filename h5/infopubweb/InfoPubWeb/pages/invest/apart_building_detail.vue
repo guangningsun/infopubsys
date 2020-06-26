@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
-			<block slot="content">公寓</block>
+			<block slot="content">{{nav_title}}</block>
 		</cu-custom>
 		<!-- <view class="cu-card">
 			<view class="cu-item shadow">
@@ -27,8 +27,7 @@
 					<view class="text-dark-grey margin-right">地址</view>
 					<view class="flex">
 						<text class="text-right margin-right-sm">
-							<!-- {{ team_detail_info.address }} -->
-							ddddd
+							{{ detail_info.address }}
 						</text>
 						<text class="cuIcon-locationfill xl text-red"></text>
 					</view>
@@ -36,13 +35,12 @@
 				
 				<view
 					class="flex justify-between margin-top"
-					@tap="onCall(detail_info.phone_number)"
+					@tap="onCall(detail_info.tel)"
 				>
 					<view class="text-dark-grey margin-right">电话</view>
 					<view class="flex">
 						<text class="text-right margin-right-sm">
-							<!-- {{ team_detail_info.phone_number }} -->
-							189939399
+							{{ detail_info.tel }}
 						</text>
 						<text class="cuIcon-phone xl text-olive"></text>
 					</view>
@@ -59,6 +57,10 @@ export default {
 		return {
 			iframeURL: 'https://mp.weixin.qq.com/s/0E2-jdsmE5JonoPVG6ekBg',
 			
+			nav_title:'公寓',
+			
+			detail_info:null,
+						
 			js_sdk_info: {
 				nonceStr: '',
 				timestamp: 0,
@@ -66,9 +68,22 @@ export default {
 			},
 		};
 	},
-	onLoad() {
+	onLoad(option) {
 		this.getAssetToken();
+		console.log(option);
+		if (option.detailInfo !== undefined) {
+			let info = JSON.parse(decodeURIComponent(option.detailInfo));
+			this.detail_info = info;
+			this.iframeURL = this.detail_info.article_url;
+			console.log('apartment building detail');
+			console.log(info);
+		}
+		if(option.navTitle !== undefined){
+			this.nav_title = option.navTitle;
+		}
 		
+	},
+	onShow() {
 		this.getUrl(this.iframeURL);
 	},
 	methods: {

@@ -12,6 +12,11 @@
 			api_get_access_token: 'get_access_token/',
 			api_get_authority_list: 'get_authority_list/',
 			api_get_authority_sub_list: 'get_authority_sub_list/',
+			api_get_all_property_info:'get_all_property_info/',
+			api_get_banner_info:'get_banner_info/',
+			api_get_apartment_info:'get_apartment_info/',
+			api_get_building_info:'get_building_info/',
+			api_get_factory_info:'get_factory_info/',
 			
 			
 			// key 值

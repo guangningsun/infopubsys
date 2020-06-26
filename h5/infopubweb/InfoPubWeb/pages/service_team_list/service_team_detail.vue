@@ -59,7 +59,63 @@
 			</view>
 		</view>
 
+		<!------------------- Grid 样式 -------------------->
+		<!-- <view class="cu-bar bg-white solid-bottom margin-top">
+			<view class="action">
+				<text class="cuIcon-titles text-purple text-lg "></text>
+				<text class="title">科室目录</text>
+			</view>
+			
+		</view>
 		
+		<view class="cu-list grid gridBorder" :class="['col-' + gridCol]">
+			<view class="cu-item" v-for="(item,index) in sub_list_info" :key="index" >
+				<text class="text-lg" @tap="onClickSub(item)">{{item.name}}</text>
+			</view>
+		</view>
+		
+		<view class="cu-modal" :class="modalName == 'SubModal' ? 'show' : ''">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">{{ clickSubItem.name }}</view>
+					<view class="action" @tap="hideModal">
+						<text class="cuIcon-close text-light-purple"></text>
+					</view>
+				</view>
+				
+				<view class="cu-card no-card margin-top-sm margin-botom-sm">
+					<view class="cu-item shadow padding">
+						<view class="flex action justify-start">
+							<text class="cuIcon-title text-purple"></text>
+							<text class="text-grey text-df" style="margin-left: 5upx;">负责内容</text>
+						</view>
+						<view
+							v-html="clickSubItem.responsibilities"
+							class="flex justify-start text-content margin-top margin-botom"
+						></view>
+						<view class="flex justify-between margin-top" @tap="onCall(clickSubItem.phone_number)">
+							<view class="flex">
+								<text class="cuIcon-title text-purple"></text>
+								<view class="text-grey margin-right">电话</view>
+							</view>
+				
+							<view class="flex">
+								<text class="text-right margin-right-sm">{{ clickSubItem.phone_number }}</text>
+								<text class="cuIcon-phone xl text-olive"></text>
+							</view>
+						</view>
+					</view>
+				</view>
+		
+				<view class="cu-bar bg-white justify-end">
+					<view class="action">
+						<button class="cu-btn line-purple" @tap="hideModal">OK</button>
+					</view>
+				</view>
+			</view>
+		</view> -->
+		
+		<!------------------- 列表样式 -------------------->
 		
 		<view v-show="sub_list_info.length > 0" class="flex justify-center">
 			<view
@@ -110,6 +166,8 @@ export default {
 		return {
 			modalName: null,
 
+			gridCol: 2,
+
 			team_detail_info: null,
 			//经度
 			longitude: '',
@@ -127,7 +185,9 @@ export default {
 				signature: ''
 			},
 
-			sub_list_info: []
+			sub_list_info: [],
+			
+			clickSubItem:null,
 
 			// gaodeHref: https://uri.amap.com/marker?position=117.689565,39.001066&name=宝信大厦
 			// baiduHref:'http://api.map.baidu.com/marker?location=39.001066,117.689565&title=宝信大厦&content=即将前往目的地&output=html',
@@ -145,41 +205,28 @@ export default {
 			this.longitude = info.longitude;
 			this.latitude = info.latitude;
 			this.loc_name = info.name;
-
-			this.baiduHref =
-				'http://api.map.baidu.com/marker?location=' +
-				this.latitude +
-				',' +
-				this.longitude +
-				'&title=' +
-				this.loc_name +
-				'&content=即将前往目的地&output=html';
-
-			this.gaodeHref =
-				'https://uri.amap.com/marker?position=' +
-				this.longitude +
-				',' +
-				this.latitude +
-				'&name=' +
-				this.loc_name;
-
-			console.log(this.baiduHref);
 		}
 
 		this.loadData();
 	},
 	methods: {
-		showModal() {
-			this.modalName = 'ChooseNavModal';
+		showModal(e) {
+			this.modalName = 'SubModal';
+			
 		},
 		hideModal() {
 			this.modalName = null;
+		},
+		onClickSub(item){
+			this.clickSubItem = item;
+			this.showModal(item);
 		},
 
 		successCb(rsp) {
 			console.log(rsp.data);
 			if (rsp.data.error === 0) {
 				this.sub_list_info = rsp.data.msg.authority_sub_info;
+				this.clickSubItem = this.sub_list_info[0];
 			}
 		},
 		failCb(err) {
@@ -206,7 +253,7 @@ export default {
 			var jweixin = require('jweixin-module');
 			jweixin.config({
 				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				appId: 'wxed4a279d2cdba74e', // 必填，公众号的唯一标识
+				appId:  getApp().globalData.appid, // 必填，公众号的唯一标识
 				timestamp: this.js_sdk_info.timestamp, // 必填，生成签名的时间戳
 				nonceStr: this.js_sdk_info.nonceStr, // 必填，生成签名的随机串
 				signature: this.js_sdk_info.signature, // 必填，签名
