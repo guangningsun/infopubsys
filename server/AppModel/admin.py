@@ -39,10 +39,10 @@ class FactoryInfoAdmin(ImportExportModelAdmin):
 # 公寓管理
 @admin.register(ApartmentInfo)
 class ApartmentInfoAdmin(ImportExportModelAdmin): 
-    list_display=['id','apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url']
-    search_fields =('apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url')
+    list_display=['id','apartment_region','title','title_img','latitude','longitude','tel','address','article_url']
+    search_fields =('apartment_region','title','title_img','latitude','longitude','tel','address','article_url')
     fieldsets = [
-       ('用户数据', {'fields': ['apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url'], 'classes': ['']}),
+       ('用户数据', {'fields': ['apartment_region','title','title_img','latitude','longitude','tel','address','article_url'], 'classes': ['']}),
     ]
     list_per_page = 15
 

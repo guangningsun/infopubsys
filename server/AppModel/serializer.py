@@ -20,7 +20,7 @@ class ApartmentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ApartmentInfo
-        fields = ('id','apartment_region','apartment_title','apartment_phone','apartment_address','apartment_url')
+        fields = ('id','apartment_region','title','title_img','latitude','longitude','tel','address','article_url')
 
 
 class BuildingSerializer(serializers.ModelSerializer):

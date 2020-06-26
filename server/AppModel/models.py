@@ -12,10 +12,13 @@ from ckeditor.fields import RichTextField
 #公寓类
 class ApartmentInfo(models.Model):
       apartment_region = models.CharField(max_length=200,verbose_name='区域')
-      apartment_title = models.CharField(max_length=200,verbose_name='标题')
-      apartment_phone = models.CharField(max_length=200,verbose_name='电话')
-      apartment_address = models.CharField(max_length=200,verbose_name='地址')
-      apartment_url = models.CharField(max_length=200,verbose_name='链接')
+      title = models.CharField(max_length=200,verbose_name='标题')
+      title_img = models.ImageField(u'标题图片',null=True, blank=True, upload_to='title_image')
+      latitude  = models.CharField(max_length=200,verbose_name='经度')
+      longitude  = models.CharField(max_length=200,verbose_name='纬度')
+      tel = models.CharField(max_length=200,verbose_name='电话')
+      address = models.CharField(max_length=200,verbose_name='地址')
+      article_url = models.CharField(max_length=200,verbose_name='链接')
 
       class Meta:
             verbose_name = '公寓信息'
