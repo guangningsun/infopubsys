@@ -21,56 +21,32 @@
 		
 		<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(93vh - 375upx)">
 			<!-- 公寓list -->
-			<!-- <view v-show="TabCur == 0" class="cu-list bg-white solid-top margin-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in 10" >
-					<view class="flex align-center">
-						<view class="text-bold text-lg text-black">title</view>
-					</view>
-					<view class="margin-left cu-avatar xxl" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				</view>
-			</view> -->
 			<view v-show="TabCur == 0" class="cu-list bg-white solid-top margin-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in apartment_info_list" @tap="goToApartBuildDetail(item,'公寓')">
+				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in apartment_info_list" :key="index" @tap="goToApartBuildDetail(item,'公寓')">
 					<view class="flex align-center">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
-					<view class="margin-left cu-avatar xxl" :style=" 'background-image:url(' + domain + item.title_img + ');'"></view>
+					<view class="margin-left cu-avatar xxl" :style=" item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>
 				</view>
 			</view>
 			
 			<!-- 楼宇List -->
-			<!-- <view v-show="TabCur == 1" class="cu-list bg-white solid-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in 2">
-					<view class="flex align-center">
-						<view class="text-bold text-lg text-black">title</view>
-					</view>
-					<view class="margin-left cu-avatar xxl" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				</view>
-			</view> -->
 			<view v-show="TabCur == 1" class="cu-list bg-white solid-top margin-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in building_info_list" @tap="goToApartBuildDetail(item,'楼宇')">
+				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in building_info_list" :key="index" @tap="goToApartBuildDetail(item,'楼宇')">
 					<view class="flex align-center">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
-					<view class="margin-left cu-avatar xxl" :style=" 'background-image:url(' + domain + item.title_img + ');'"></view>
+					<view class="margin-left cu-avatar xxl" :style="item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>
 				</view>
 			</view>
 			
 			<!-- 厂房List -->
-			<!-- <view v-show="TabCur == 2" class="cu-list bg-white solid-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in 2">
-					<view class="flex align-center">
-						<view class="text-bold text-lg text-black">title</view>
-					</view>
-					<view class="margin-left cu-avatar xxl" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-				</view>
-			</view> -->
 			<view v-show="TabCur == 2" class="cu-list bg-white solid-top margin-top" >
-				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in factory_info_list" @tap="goToFactoryDetail(item)">
+				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in factory_info_list" :key="index" @tap="goToFactoryDetail(item)">
 					<view class="flex align-center">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
-					<view class="margin-left cu-avatar xxl" :style=" 'background-image:url(' + domain + item.title_img + ');'"></view>
+					<view class="margin-left cu-avatar xxl" :style="item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>
 				</view>
 			</view>
 			

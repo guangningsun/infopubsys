@@ -9,7 +9,7 @@
 				<view class="padding-xs flex align-center">
 					<view class="flex-sub text-center">
 						<view class="text-xl padding">
-							<text class="text-black text-bold">{{detail_info.name}}</text>
+							<text class="text-black text-bold">{{ detail_info.name == undefined ? detail_info.title : detail_info.name}}</text>
 							<!-- <text class="text-black text-bold">xxx厂</text> -->
 						</view>
 					</view>
@@ -28,18 +28,9 @@
 					</view>
 					
 					<view class="margin-top">
-						<!-- view class="padding-bottom-sm">
-							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+0+ '.jpg'" mode="aspectFill"></image>
-						</view>
-						<view class="padding-bottom-sm">
-							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+1+ '.jpg'" mode="aspectFit"></image>
-						</view>
-						<view class="padding-bottom-sm">
-							<image :src="'https://ossweb-img.qq.com/images/lol/web201310/skin/big3900'+2+ '.jpg'" mode="aspectFit"></image>
-						</view> -->
 						
-						<view class="padding-bottom-sm"  v-for="(item,index) in detail_info.img_list">
-							<image :src="domain + item" mode="aspectFit"></image>
+						<view class="padding-bottom-sm"  v-for="(item,index) in detail_info.image_list" :key="index" >
+							<image :src="domain + '/media/' + item" mode="aspectFit"></image>
 						</view>
 						
 					</view>
