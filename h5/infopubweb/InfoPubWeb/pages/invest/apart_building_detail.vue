@@ -9,7 +9,7 @@
 			</view>
 		</view> -->
 		
-		<view id="loading" class="bg-white flex-sub radius shadow-lg">
+		<view v-show="showLoading" id="loading" class="bg-white flex-sub radius shadow-lg">
 			<image src="../../static/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240upx"></image>
 		</view>
 		
@@ -70,7 +70,7 @@ export default {
 				timestamp: 0,
 				signature: ''
 			},
-			
+			 showLoading:true,
 		};
 	},
 	onLoad(option) {
@@ -91,36 +91,14 @@ export default {
 		
 	},
 	onShow() {
-		
+		console.log("onShow!======");
 	},
-	mounted () {
-	    var _this = this
-		console.log("mouted()!!")
-	    const iframe = document.querySelector('#iFrame')
-	    // 处理兼容行问题
-	    if (iframe.attachEvent) {
-			console.log("mouted()  111  !!")
-	      iframe.attachEvent('onload', function () {
-	        // iframe加载完毕以后执行操作
-	        console.log('iframe已加载完毕dd');
-			const loadingView = document.querySelector('#loading');
-			loadingView.style.display="none";
-			console.log("mouted()  444!!")
-	      })
-	    } else {
-			console.log("mouted()  222 !!")
-	      iframe.onload = function () {
-	        // iframe加载完毕以后执行操作
-	        console.log('iframe已加载完毕sss')
-			const loadingView = document.querySelector('#loading');
-			console.log("mouted()  333 !!")
-			loadingView.style.display="none";
-			console.log("mouted()  555!!")
-			// loadingView.style="heigth:0px";
-	      }
-	    }
+	onReady() {
+		console.log('ready!!!!!!!!!!!!!');
 	},
+	
 	methods: {
+		
 		successAccessCb(rsp) {
 			this.js_sdk_info.timestamp = rsp.data.timestamp;
 			this.js_sdk_info.nonceStr = rsp.data.nonceStr;
@@ -197,6 +175,7 @@ export default {
 		},
 		
 		getUrl(URL) {
+			console.log('getUrl');
 			let http = window.location.protocol === 'http:' ? 'http:' : 'https:';
 			//调用跨域API
 			let realurl = http + '//cors-anywhere.herokuapp.com/' + URL;
@@ -215,6 +194,8 @@ export default {
 					var doc = iframe.contentDocument || iframe.document;
 					doc.write(html_src);
 					doc.getElementById('js_content').style.visibility = 'visible';
+					
+					this.showLoading = false;
 					
 					//var doc = iframe.contentDocument || iframe.document;
 					//doc.body.innerHTML = html_src;
