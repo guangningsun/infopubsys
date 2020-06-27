@@ -10,18 +10,18 @@
 		</view>
 
 		<view class="invisible_top flex solid-bottom padding justify-center">
-			<view class="padding-sm margin-xs radius" style="background-color:#000000aa; width: 250upx; height: 100upx;" @tap="onPolicy"></view>
+			<view class="padding-sm margin-xs radius" style="background-color:#00000000; width: 250upx; height: 100upx;" @tap="onPolicy"></view>
 		</view>
 		
 		<view class="invisible_center flex">
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000aa; width: 300upx; height: 100upx;" @tap="onProEnv"></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000bb; width: 100upx; height: 100upx;" ></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000cc; width: 300upx; height: 100upx;" @tap="onSocietyEnv"></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 300upx; height: 100upx;" @tap="onProEnv"></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 100upx; height: 100upx;" ></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 300upx; height: 100upx;" @tap="onSocietyEnv"></view>
 		</view>
 		
 		<view class="invisible_bottom flex">
-			<view class="flex-sub padding-sm radius" style="background-color:#000000dd; width: 350upx; height: 130upx;" @tap="onHumanities"></view>
-			<view class="flex-sub margin-left radius" style="background-color:#00000099; width: 350upx; height: 130upx;" @tap="onApartBuilding"></view>
+			<view class="flex-sub padding-sm radius" style="background-color:#00000000; width: 350upx; height: 130upx;" @tap="onHumanities"></view>
+			<view class="flex-sub margin-left radius" style="background-color:#00000000; width: 350upx; height: 130upx;" @tap="onApartBuilding"></view>
 		</view>
 	</view>
 </template>
@@ -89,20 +89,32 @@ export default {
 		},
 
 		onPolicy(){
-			console.log('Policy');
+			console.log('policy_link');
 			
 			uni.navigateTo({
 				url: 'external_link?link=' + this.policy_link,
 			})
 		},
 		onProEnv(){
+			console.log('industry_link');
 			
+			uni.navigateTo({
+				url: 'external_link?link=' + this.industry_link,
+			})
 		},
 		onSocietyEnv(){
+			console.log('society_link');
 			
+			uni.navigateTo({
+				url: 'external_link?link=' + this.society_link,
+			})
 		},
 		onHumanities(){
+			console.log('humanity_link');
 			
+			uni.navigateTo({
+				url: 'external_link?link=' + this.humanity_link,
+			})
 		},
 		onApartBuilding(){
 			uni.navigateTo({
