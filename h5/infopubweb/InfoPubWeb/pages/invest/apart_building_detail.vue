@@ -95,21 +95,28 @@ export default {
 	},
 	mounted () {
 	    var _this = this
+		console.log("mouted()!!")
 	    const iframe = document.querySelector('#iFrame')
 	    // 处理兼容行问题
 	    if (iframe.attachEvent) {
+			console.log("mouted()  111  !!")
 	      iframe.attachEvent('onload', function () {
 	        // iframe加载完毕以后执行操作
 	        console.log('iframe已加载完毕dd');
 			const loadingView = document.querySelector('#loading');
 			loadingView.style.display="none";
+			console.log("mouted()  444!!")
 	      })
 	    } else {
+			console.log("mouted()  222 !!")
 	      iframe.onload = function () {
 	        // iframe加载完毕以后执行操作
 	        console.log('iframe已加载完毕sss')
 			const loadingView = document.querySelector('#loading');
+			console.log("mouted()  333 !!")
 			loadingView.style.display="none";
+			console.log("mouted()  555!!")
+			// loadingView.style="heigth:0px";
 	      }
 	    }
 	},
