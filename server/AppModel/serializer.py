@@ -34,7 +34,7 @@ class FactorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = FactoryInfo
-        fields = ('id','title','title_img','latitude','longitude','tel','address','article_url','info')
+        fields = ('id','title','title_img','latitude','longitude','tel','address','article_url','info','name')
 
 
 class BannerInfoSerializer(serializers.ModelSerializer):

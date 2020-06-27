@@ -32,10 +32,10 @@ class FactoryImageInline(admin.TabularInline):
 @admin.register(FactoryInfo)
 class FactoryInfoAdmin(admin.ModelAdmin): 
     inlines = [ FactoryImageInline, ]
-    list_display=['id','title','title_img','latitude','longitude','tel','address','article_url','info']
-    search_fields =('title','title_img','latitude','longitude','tel','address','article_url','info')
+    list_display=['id','title','title_img','latitude','longitude','tel','address','article_url','info','name']
+    search_fields =('title','title_img','latitude','longitude','tel','address','article_url','info','name')
     fieldsets = [
-       ('用户数据', {'fields': ['title','title_img','latitude','longitude','tel','address','article_url','info'], 'classes': ['']}),
+       ('用户数据', {'fields': ['title','title_img','latitude','longitude','tel','address','article_url','info','name'], 'classes': ['']}),
     ]
     list_per_page = 15
 
