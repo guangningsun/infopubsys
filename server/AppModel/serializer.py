@@ -46,6 +46,6 @@ class BannerInfoSerializer(serializers.ModelSerializer):
 class UrlInfoSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model = BannerInfo
+        model = UrlInfo
         fields = ('id','url_name','url_type','url_address')
 
