@@ -9,6 +9,10 @@
 			</view>
 		</view> -->
 		
+		<view id="loading" class="bg-white flex-sub radius shadow-lg">
+			<image src="../../static/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240upx"></image>
+		</view>
+		
 		<iframe id="iFrame" style="height: 1100upx; width: 100%;" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe>
 	
 		
@@ -66,6 +70,7 @@ export default {
 				timestamp: 0,
 				signature: ''
 			},
+			
 		};
 	},
 	onLoad(option) {
@@ -77,6 +82,8 @@ export default {
 			this.iframeURL = this.detail_info.article_url;
 			console.log('apartment building detail');
 			console.log(info);
+			
+			this.getUrl(this.iframeURL);
 		}
 		if(option.navTitle !== undefined){
 			this.nav_title = option.navTitle;
@@ -84,7 +91,27 @@ export default {
 		
 	},
 	onShow() {
-		this.getUrl(this.iframeURL);
+		
+	},
+	mounted () {
+	    var _this = this
+	    const iframe = document.querySelector('#iFrame')
+	    // 处理兼容行问题
+	    if (iframe.attachEvent) {
+	      iframe.attachEvent('onload', function () {
+	        // iframe加载完毕以后执行操作
+	        console.log('iframe已加载完毕dd');
+			const loadingView = document.querySelector('#loading');
+			loadingView.style.display="none";
+	      })
+	    } else {
+	      iframe.onload = function () {
+	        // iframe加载完毕以后执行操作
+	        console.log('iframe已加载完毕sss')
+			const loadingView = document.querySelector('#loading');
+			loadingView.style.display="none";
+	      }
+	    }
 	},
 	methods: {
 		successAccessCb(rsp) {
@@ -181,6 +208,7 @@ export default {
 					var doc = iframe.contentDocument || iframe.document;
 					doc.write(html_src);
 					doc.getElementById('js_content').style.visibility = 'visible';
+					
 					//var doc = iframe.contentDocument || iframe.document;
 					//doc.body.innerHTML = html_src;
 					//iframe.document.getElementsByTagName('body').innerHTML = html_src;
@@ -215,4 +243,13 @@ export default {
 	width: 100%;
 	height: 100%;
 }
+.loading_bg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
 </style>
