@@ -147,6 +147,16 @@ def get_banner_info(request):
                     "banner_info": serializer.data }}
         return Response(res_json)
 
+# 获取轮播图信息
+@api_view(['GET'])
+def get_invest_index_link(request):
+    if request.method == 'GET':
+        urlset = UrlInfo.objects.all()
+        serializer = UrlInfoSerializer(urlset, many=True)
+        res_json = {"error": 0,"msg": {
+                    "banner_info": serializer.data }}
+        return Response(res_json)
+
 
 # 获取微信token功能
 def get_access_token(request):

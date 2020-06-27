@@ -18,5 +18,7 @@ urlpatterns = [
     path('get_building_info/', views.get_building_info),
     path('get_factory_info/', views.get_factory_info),
     path('get_banner_info/', views.get_banner_info),
+    path('get_invest_index_link/', views.get_invest_index_link),
+    
 ] 
  
