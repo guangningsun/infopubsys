@@ -127,6 +127,10 @@ def get_factory_info(request):
     if request.method == 'GET':
         factoryset = FactoryInfo.objects.all()
         serializer = FactorySerializer(factoryset, many=True)
+        for i in range (0,len(serializer.data)):
+                for k,v in serializer.data[i].items():
+                    if k == "id":
+        serializer.data[i]['image_list'] = FactoryInfo.objects.get(id=v).images.all()
         res_json = {"error": 0,"msg": {
                     "factory_info": serializer.data }}
         return Response(res_json)

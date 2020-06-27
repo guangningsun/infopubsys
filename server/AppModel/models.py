@@ -68,6 +68,14 @@ class FactoryInfo(models.Model):
       def __str__(self):
           return self.title
 
+# 厂房图片
+class FactoryImage(models.Model):
+      factory = models.ForeignKey(FactoryInfo, related_name='images',on_delete=models.CASCADE)
+      image = models.ImageField(u'厂房图片',null=True, blank=True, upload_to='factory_image')
+
+      class Meta:
+            verbose_name = '厂房图片列表'
+            verbose_name_plural = '厂房图片列表'
 
 class TeamInfo(models.Model):
       team_name = models.CharField(max_length=200,verbose_name='团队名称')

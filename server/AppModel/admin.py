@@ -24,10 +24,14 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+class FactoryImageInline(admin.TabularInline):
+    model = FactoryImage
+    extra = 2
 
 # 厂房管理
 @admin.register(FactoryInfo)
-class FactoryInfoAdmin(ImportExportModelAdmin): 
+class FactoryInfoAdmin(admin.ModelAdmin): 
+    inlines = [ FactoryImageInline, ]
     list_display=['id','title','title_img','latitude','longitude','tel','address','article_url','info']
     search_fields =('title','title_img','latitude','longitude','tel','address','article_url','info')
     fieldsets = [
