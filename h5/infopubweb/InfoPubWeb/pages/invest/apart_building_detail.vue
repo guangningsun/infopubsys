@@ -205,22 +205,6 @@ export default {
 					console.log(err);
 				}
 			);
-			
-			// let http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
-			//      let realurl = http + '//cors-anywhere.herokuapp.com/' + URL;
-			//      this.$axios.get(realurl).then((response)=>{
-			//        console.log(response)
-			//        let html = response.data;
-			//        html = html.replace(/data-src/g, "src")
-			//                   .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/g, '')
-			//                   .replace(/https/g,'http');
-			//        let html_src =html;
-			//        let iframe = document.getElementById('iFrame');
-			//        iframe.src = html_src;
-			// 	   var doc = iframe.contentDocument || iframe.document;
-			// 		doc.write(html_src);
-			// 		doc.getElementById('js_content').style.visibility = 'visible';
-			//      },(err)=>{console.log(err);});
 		}
 	}
 };

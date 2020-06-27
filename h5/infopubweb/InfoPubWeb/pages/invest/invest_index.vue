@@ -10,18 +10,18 @@
 		</view>
 
 		<view class="invisible_top flex solid-bottom padding justify-center">
-			<view class="padding-sm margin-xs radius" style="background-color:#00000000; width: 200upx; height: 80upx;" @tap="onPolicy"></view>
+			<view class="padding-sm margin-xs radius" style="background-color:#000000aa; width: 250upx; height: 100upx;" @tap="onPolicy"></view>
 		</view>
 		
 		<view class="invisible_center flex">
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 220upx; height: 80upx;" @tap="onProEnv"></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 220upx; height: 80upx;" ></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 220upx; height: 80upx;" @tap="onSocietyEnv"></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000aa; width: 300upx; height: 100upx;" @tap="onProEnv"></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000bb; width: 100upx; height: 100upx;" ></view>
+			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#000000cc; width: 300upx; height: 100upx;" @tap="onSocietyEnv"></view>
 		</view>
 		
 		<view class="invisible_bottom flex">
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 350upx; height: 90upx;" @tap="onHumanities"></view>
-			<view class="flex-sub margin-xs radius" style="background-color:#00000000; width: 350upx; height: 90upx;" @tap="onApartBuilding"></view>
+			<view class="flex-sub padding-sm radius" style="background-color:#000000dd; width: 350upx; height: 130upx;" @tap="onHumanities"></view>
+			<view class="flex-sub margin-left radius" style="background-color:#00000099; width: 350upx; height: 130upx;" @tap="onApartBuilding"></view>
 		</view>
 	</view>
 </template>
@@ -30,27 +30,56 @@
 export default {
 	data() {
 		return {
-			team_list: []
+			link:{},
+			policy_link:'',
+			industry_link:'',
+			society_link:'',
+			humanity_link:''
 		};
 	},
 	onLoad() {
-		// this.loadData();
+		this.loadData();
 	},
 	methods: {
+
 		successCb(rsp) {
 			console.log(rsp);
 			if (rsp.data.error === 0) {
-				this.team_list = rsp.data.msg.user_info;
+				this.link = rsp.data.msg.url_info;
+				for(let i = 0; i < this.link.length; i++){
+					let temp = this.link[i];
+					console.log(temp);
+					if(temp.url_type.indexOf("policy") != -1){
+						console.log('set policy_link');
+						this.policy_link = temp.url_address;
+					}
+					else if(temp.url_type.indexOf("industry") != -1){
+						console.log('set industry_link');
+						this.industry_link = temp.url_address;
+					}
+					else if(temp.url_type.indexOf("society") != -1){
+						console.log('set society_link');
+						this.society_link = temp.url_address;
+					}
+					else if(temp.url_type.indexOf("humanity") != -1){
+						console.log('set humanity_link');
+						this.humanity_link = temp.url_address;
+					}
+				}
+				console.log(this.policy_link);
+				console.log(this.industry_link);
+				console.log(this.society_link);
+				console.log(this.humanity_link);
 			}
 		},
 		failCb(err) {
-			console.log('api_get_team failed', err);
+			console.log('api_get_invest_index_link failed', err);
 		},
 		completeCb(rsp) {},
-
+		
 		loadData() {
 			this.requestWithMethod(
-				getApp().globalData.api_get_team,
+				getApp().globalData.api_get_invest_index_link,
 				'GET',
 				'',
 				this.successCb,
@@ -59,13 +88,12 @@ export default {
 			);
 		},
 
-		onClickServiceTeam() {
-			uni.navigateTo({
-				url: '../service_team_list/service_team_list'
-			});
-		},
 		onPolicy(){
+			console.log('Policy');
 			
+			uni.navigateTo({
+				url: 'external_link?link=' + this.policy_link,
+			})
 		},
 		onProEnv(){
 			

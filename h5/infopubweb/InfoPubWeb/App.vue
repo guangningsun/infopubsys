@@ -17,6 +17,7 @@
 			api_get_apartment_info:'get_apartment_info/',
 			api_get_building_info:'get_building_info/',
 			api_get_factory_info:'get_factory_info/',
+			api_get_invest_index_link:'get_invest_index_link/',
 			
 			
 			// key 值

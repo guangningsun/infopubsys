@@ -28,6 +28,10 @@
             "path" : "pages/invest/factory_detail",
             "style" : {}
         }
+        ,{
+            "path" : "pages/invest/external_link",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
