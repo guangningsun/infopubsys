@@ -85,7 +85,7 @@ class TeamInfo(models.Model):
 
 # 组织机构
 class Category(MPTTModel):
-      name = models.CharField(max_length=50, unique=True,verbose_name='单位/科室名称')
+      name = models.CharField(max_length=50,verbose_name='单位/科室名称')
       parent = TreeForeignKey('self', null=True, blank=True,on_delete=models.CASCADE, related_name='children', db_index=True,verbose_name='上级部门')
       longitude = models.CharField(max_length=200,verbose_name='经度',default="-")
       latitude = models.CharField(max_length=200,verbose_name='纬度',default="-")

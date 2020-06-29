@@ -154,7 +154,7 @@ def get_invest_index_link(request):
         urlset = UrlInfo.objects.all()
         serializer = UrlInfoSerializer(urlset, many=True)
         res_json = {"error": 0,"msg": {
-                    "banner_info": serializer.data }}
+                    "url_info": serializer.data }}
         return Response(res_json)
 
 
