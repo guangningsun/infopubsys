@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<image class="bg-set" src="../../static/invest_bg.jpeg"></image>
+		<image class="bg-set" src="../../static/invest_bg.png"></image>
 
 		<view class=" justify-center" style="padding-top: 280upx; width:100%; margin-left: 80upx;">
 			<image
@@ -9,7 +9,7 @@
 			></image>
 		</view>
 
-		<view class="invisible_top flex solid-bottom padding justify-center">
+		<view class="invisible_top flex padding justify-center">
 			<view class="padding-sm margin-xs radius" style="background-color:#00000000; width: 250upx; height: 100upx;" @tap="onPolicy"></view>
 		</view>
 		

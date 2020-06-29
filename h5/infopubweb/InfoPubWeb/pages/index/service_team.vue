@@ -2,8 +2,9 @@
 	<view>
 		 <image class="bg-set" src="../../static/team_bg.png"></image>
 
-		 <view class=" justify-center" style="padding-top: 250upx; width:100%; margin-left: 120upx;">
-		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" id="animat" @tap="onClickServiceTeam"></image>
+		 <view class=" justify-center" style="padding-top: 250upx; width:100%; margin-left: 60upx;">
+		 	<!-- <image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" id="animat" @tap="onClickServiceTeam"></image> -->
+		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 470upx;" @tap="onClickServiceTeam"></image>
 		 </view>
 		 
 		 <view class=" justify-center">
