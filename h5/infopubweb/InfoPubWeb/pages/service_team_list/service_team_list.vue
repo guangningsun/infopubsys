@@ -3,7 +3,7 @@
 		<image class="bg-set" src="../../static/auth_bg.png"></image>
 		
 		<view class="fixed">
-			<cu-custom :isBack="true" bgColor="bg-shadeTop text-white">
+			<cu-custom :isBack="true" bgColor=" text-white">
 				<block slot="backText"></block>
 				<block slot="content"></block>
 			</cu-custom>
@@ -12,7 +12,7 @@
 		
 
 		<!------------------- Grid 样式 -------------------->
-		<view class="cu-bar margin-top">
+		<view class="cu-bar margin-top-xs">
 			<view class=" action" style="margin-left: 200upx;">
 				
 				<image

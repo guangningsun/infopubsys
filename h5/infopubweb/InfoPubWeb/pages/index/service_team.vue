@@ -2,16 +2,16 @@
 	<view>
 		 <image class="bg-set" src="../../static/team_bg.png"></image>
 
-		 <view class=" justify-center" style="padding-top: 250upx; width:100%; margin-left: 60upx;">
+		 <view class=" justify-center" style="padding-top: 250upx; width:100%; margin-left: 250upx;">
 		 	<!-- <image  src="../../static/service_title.png" style="width: 530upx; height: 350upx;" id="animat" @tap="onClickServiceTeam"></image> -->
-		 	<image  src="../../static/service_title.png" style="width: 530upx; height: 470upx;" @tap="onClickServiceTeam"></image>
+		 	<image  src="../../static/service_title.png" style="width: 150px; height: 330upx;" id="animat" @tap="onClickServiceTeam"></image>
 		 </view>
 		 
 		 <view class=" justify-center">
-			<view class="flex margin-top-lg padding-right padding-left-xl" >
+			<view class="flex padding-right padding-left-xl" style="margin-top: 160upx;">
 				<view style="background-color: #ffffff; width: 10upx; height: 200upx;"></view>
 				<view class="margin-left-sm">
-					 <view class="text-white text-xl margin-left-sm">
+					 <view class="text-white text-xl margin-left-sm ">
 						天津经济技术开发区管理委员会
 					 </view>
 					 <view class="text-white text-lg margin-left-sm margin-top-sm" style="opacity: 0.7;">
