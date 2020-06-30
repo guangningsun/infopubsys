@@ -6,8 +6,8 @@
 
 		<view class="cu-card article">
 			<view class="cu-item shadow">
-				<view class="padding-xs flex align-center">
-					<view class="flex-sub text-center">
+				<view class="flex align-center">
+					<view class="padding-top-sm flex-sub text-center">
 						<view class="text-xl padding">
 							<text class="text-black text-bold">{{ detail_info.name == undefined ? detail_info.title : detail_info.name}}</text>
 							<!-- <text class="text-black text-bold">xxx厂</text> -->
@@ -23,9 +23,10 @@
 						</view>
 					</view>
 					
-					<view class="text-content margin-botom">
-						{{detail_info.info}}
-					</view>
+					<view
+						v-html="detail_info.info"
+						class="text-content margin-botom"
+					></view>
 					
 					<view class="margin-top">
 						

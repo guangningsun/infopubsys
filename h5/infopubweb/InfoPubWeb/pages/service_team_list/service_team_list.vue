@@ -25,7 +25,7 @@
 		
 		<view class="cu-list grid no-border" style="background-color: rgba(0,0,0,0);" :class="['col-' + gridCol]">
 			<view class="cu-item" style="background-color: rgba(0,0,0,0);" v-for="(item,index) in team_list" :key="index" @tap="goToDetail(item)">
-				<view class="flex align-center justify-center"  style="background-color: rgba(0,0,0,0);">
+				<view class="flex align-center justify-center margin-top-xs"  style="background-color: rgba(0,0,0,0);">
 					<image
 						:src="'../../static/auth_icons/' + item.name +'.png'"
 						style="width: 130upx; height: 130upx;"
@@ -33,7 +33,7 @@
 					></image>
 				</view>
 				
-				<view class="btn-border margin-top margin-left-sm margin-right-sm cu-btn text-content round bg-purple-light text-xs " style="height: 100upx;" >{{item.name}}</view>
+				<view :class="item.name.length <= 12 ? 'margin-left-xs margin-right-xs' : '' " class="btn-border margin-top cu-btn text-content round bg-purple-light text-xs " style="height: 100upx;" >{{item.name}}</view>
 			</view>
 		</view>
 		
