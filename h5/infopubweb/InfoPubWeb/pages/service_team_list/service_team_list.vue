@@ -23,9 +23,9 @@
 			
 		</view>
 		
-		<view class="cu-list grid no-border" style="background-color: #00000000;" :class="['col-' + gridCol]">
-			<view class="cu-item" style="background-color: #00000000;" v-for="(item,index) in team_list" :key="index" @tap="goToDetail(item)">
-				<view class="flex align-center justify-center"  style="background-color: #00000000;">
+		<view class="cu-list grid no-border" style="background-color: rgba(0,0,0,0);" :class="['col-' + gridCol]">
+			<view class="cu-item" style="background-color: rgba(0,0,0,0);" v-for="(item,index) in team_list" :key="index" @tap="goToDetail(item)">
+				<view class="flex align-center justify-center"  style="background-color: rgba(0,0,0,0);">
 					<image
 						:src="'../../static/auth_icons/' + item.name +'.png'"
 						style="width: 130upx; height: 130upx;"
