@@ -1,9 +1,9 @@
 <template>
-	<view>
+	<view class="padding-left-sm">
 		<image class="bg-set" src="../../static/invest_bg.png"></image>
 
 		<view class="flex justify-center" id="animat" style="padding-top: 250upx; width:100%; ">
-			<view @tap="onPolicy">
+			<view @tap="onProEnv">
 				<image
 					src="../../static/invest_business.png"
 					style="width: 150upx; height: 150upx;"
@@ -19,7 +19,7 @@
 		</view>
 
 		<view class="invisible_center flex justify-center" style="width:100%; ">
-			<view class="flex flex-sub justify-center" id="animat2" @tap="onProEnv">
+			<view class="flex flex-sub justify-center" id="animat2" @tap="onPolicy">
 				<image
 					src="../../static/invest_policy.png"
 					style="width: 150upx; height: 150upx;"

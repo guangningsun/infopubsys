@@ -3,7 +3,7 @@
 		 <image class="bg-set" src="../../static/team_bg.png"></image>
 
 		 <view class="flex justify-center" style="padding-top: 230upx; width:100%;">
-		 	<image  src="../../static/team_index.png" style="width: 135px; height: 250upx;" id="animat" @tap="onClickServiceTeam"></image>
+		 	<image  src="../../static/team_index.png" style="width: 245upx; height: 245upx;" id="animat" @tap="onClickServiceTeam"></image>
 		 </view>
 		 
 		 <view class=" justify-center" style="width:100%; margin-left: 390upx; margin-top: -50upx;">
