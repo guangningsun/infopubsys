@@ -3,8 +3,8 @@
 		<image class="bg-set" src="../../static/auth_bg.png"></image>
 		
 		<view class="fixed">
-			<cu-custom :isBack="true" bgColor=" text-white">
-				<block slot="backText"></block>
+			<cu-custom :isBack="true" bgColor="bg-shadeTop text-white">
+				<block slot="backText">返回</block>
 				<block slot="content"></block>
 			</cu-custom>
 		</view>

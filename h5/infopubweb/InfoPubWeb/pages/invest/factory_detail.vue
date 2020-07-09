@@ -1,8 +1,11 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
-			<block slot="content">厂房</block>
-		</cu-custom>
+		<view class="fixed">
+			<cu-custom :isBack="true" bgColor="bg-shadeTop text-white">
+				<block slot="backText">返回</block>
+				<block slot="content">厂房</block>
+			</cu-custom>
+		</view>
 
 		<view class="cu-card article">
 			<view class="cu-item shadow">
@@ -30,7 +33,7 @@
 					
 					<view class="margin-top">
 						
-						<view class="padding-bottom-sm"  v-for="(item,index) in detail_info.image_list" :key="index" >
+						<view class="flex justify-center" style="margin-top: -60upx; width: 100%;"  v-for="(item,index) in detail_info.image_list" :key="index" >
 							<image :src="domain + '/media/' + item" mode="aspectFit"></image>
 						</view>
 						
