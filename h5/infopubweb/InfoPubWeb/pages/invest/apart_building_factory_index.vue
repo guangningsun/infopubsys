@@ -23,17 +23,17 @@
 			<!-- 公寓list -->
 			<view v-show="TabCur == 0" class="cu-list bg-white solid-top margin-top" >
 				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in apartment_info_list" :key="index" @tap="goToApartBuildDetail(item,'公寓')">
-					<view class="flex align-center">
+					<view class="flex align-center" style="width: 500upx;">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
-					<view class="margin-left cu-avatar xxl" :style=" item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>
+					<view class="margin-left cu-avatar xxl" :style=" item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'" ></view>
 				</view>
 			</view>
 			
 			<!-- 楼宇List -->
 			<view v-show="TabCur == 1" class="cu-list bg-white solid-top margin-top" >
 				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in building_info_list" :key="index" @tap="goToApartBuildDetail(item,'楼宇')">
-					<view class="flex align-center">
+					<view class="flex align-center" style="width: 500upx;">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
 					<view class="margin-left cu-avatar xxl" :style="item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>
@@ -43,7 +43,7 @@
 			<!-- 厂房List -->
 			<view v-show="TabCur == 2" class="cu-list bg-white solid-top margin-top" >
 				<view class="flex solid-bottom padding justify-between" v-for="(item,index) in factory_info_list" :key="index" @tap="goToFactoryDetail(item)">
-					<view class="flex align-center">
+					<view class="flex align-center" style="width: 500upx;">
 						<view class="text-bold text-lg text-black">{{item.title}}</view>
 					</view>
 					<view class="margin-left cu-avatar xxl" :style="item.title_img === null ? 'background-image:url(../../static/default_img.jpg);' : 'background-image:url(' + domain + item.title_img + ');'"></view>

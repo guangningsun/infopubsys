@@ -12,28 +12,18 @@
 		
 
 		<!------------------- Grid 样式 -------------------->
-		<view class="cu-bar margin-top-xs">
-			<view class=" action" style="margin-left: 200upx;">
-				
-				<image
-					src="../../static/authority_list.png"
-					style="width: 380upx; height: 55upx;"
-				></image>
-			</view>
-			
-		</view>
 		
-		<view class="cu-list grid no-border" style="background-color: rgba(0,0,0,0);" :class="['col-' + gridCol]">
+		<view class="cu-list grid no-border margin-left-sm margin-right-sm" style="background-color: rgba(0,0,0,0);" :class="['col-' + gridCol]">
 			<view class="cu-item" style="background-color: rgba(0,0,0,0);" v-for="(item,index) in team_list" :key="index" @tap="goToDetail(item)">
-				<view class="flex align-center justify-center margin-top-xs"  style="background-color: rgba(0,0,0,0);">
+				<view class="flex align-center justify-center margin-top-sm"  style="background-color: rgba(0,0,0,0);">
 					<image
 						:src="'../../static/auth_icons/' + item.name +'.png'"
-						style="width: 130upx; height: 130upx;"
+						style="width: 150upx; height: 150upx;"
 						mode="aspectFit"
 					></image>
 				</view>
 				
-				<view :class="item.name.length <= 12 ? 'margin-left-xs margin-right-xs' : '' " class="btn-border margin-top cu-btn text-content round bg-purple-light text-xs " style="height: 100upx;" >{{item.name}}</view>
+				<view :class="item.name.length <= 12 ? 'margin-left-xs margin-right-xs' : '' " class="btn-border margin-top-sm cu-btn text-content round bg-purple-light text-xs " style="height: 100upx;" >{{item.name}}</view>
 			</view>
 		</view>
 		

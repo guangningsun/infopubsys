@@ -1,8 +1,12 @@
 <template>
 	<view class="padding-left-sm">
-		<image class="bg-set" src="../../static/invest_bg.png"></image>
+		<image class="bg-set" src="../../static/invest_bg.jpg"></image>
 
-		<view class="flex justify-center" id="animat" style="padding-top: 250upx; width:100%; ">
+		<view class="flex justify-center" style="padding-top: 140upx; width:100%;">
+			<image  src="../../static/teda_logo.png" style="width: 300upx; height: 100upx;" mode="aspectFit"></image>
+		</view>
+
+		<view class="flex justify-center" id="animat" style="padding-top: 150upx; width:100%; margin-left: 6upx;">
 			<view @tap="onProEnv">
 				<image
 					src="../../static/invest_business.png"
@@ -11,7 +15,7 @@
 			</view>
 		</view>
 
-		<view class="flex justify-center">
+		<view class="flex justify-center" style="margin-left: 10upx;">
 			<image
 				src="../../static/invest_center.png"
 				style="width: 320upx; height: 285upx;"
@@ -47,33 +51,6 @@
 				></image>
 			</view>
 		</view>
-
-		<!-- <view class="invisible_bottom flex">
-			<view class="flex-sub padding-sm radius" style="background-color:#000000; width: 350upx; height: 130upx;" @tap="onHumanities"></view>
-			<view class="flex-sub margin-left radius" style="background-color:#000000; width: 350upx; height: 130upx;" @tap="onApartBuilding"></view>
-		</view> -->
-
-		<!-- <view class=" justify-center" style="padding-top: 280upx; width:100%; margin-left: 80upx;">
-			<image
-				src="../../static/circle_title.png"
-				style="width: 600upx; height: 400upx;"
-			></image>
-		</view>
-
-		<view class="invisible_top flex padding justify-center">
-			<view class="padding-sm margin-xs radius" style="background-color:#00000000; width: 250upx; height: 100upx;" @tap="onPolicy"></view>
-		</view>
-		
-		<view class="invisible_center flex">
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 300upx; height: 100upx;" @tap="onProEnv"></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 100upx; height: 100upx;" ></view>
-			<view class="flex-sub padding-sm margin-xs radius" style="background-color:#00000000; width: 300upx; height: 100upx;" @tap="onSocietyEnv"></view>
-		</view>
-		
-		<view class="invisible_bottom flex">
-			<view class="flex-sub padding-sm radius" style="background-color:#00000000; width: 350upx; height: 130upx;" @tap="onHumanities"></view>
-			<view class="flex-sub margin-left radius" style="background-color:#00000000; width: 350upx; height: 130upx;" @tap="onApartBuilding"></view>
-		</view> -->
 	</view>
 </template>
 
@@ -186,21 +163,16 @@ export default {
 	font-size: 50upx;
 	height: 100upx;
 }
-.invisible_top {
-	position: absolute;
-	top: 230upx;
-/* 	width: 300px;
-	height: 300px; */
-}
+
 .invisible_center {
 	position: absolute;
-	top: 330upx;
+	top: 495upx;
 /* 	width: 300px;
 	height: 300px; */
 }
 .invisible_bottom {
 	position: absolute;
-	top: 500upx;
+	top: 650upx;
 /* 	width: 300px;
 	height: 300px; */
 }

@@ -1,8 +1,12 @@
 <template>
 	<view>
-		 <image class="bg-set" src="../../static/team_bg.png"></image>
+		 <image class="bg-set" src="../../static/team_bg.jpg"></image>
 
-		 <view class="flex justify-center" style="padding-top: 230upx; width:100%;">
+		<view class="flex justify-center" style="padding-top: 140upx; width:100%;">
+			<image  src="../../static/teda_logo.png" style="width: 300upx; height: 100upx;" mode="aspectFit"></image>
+		</view>
+
+		 <view class="flex justify-center" style="padding-top: 120upx; width:100%;">
 		 	<image  src="../../static/team_index.png" style="width: 245upx; height: 245upx;" id="animat" @tap="onClickServiceTeam"></image>
 		 </view>
 		 
@@ -10,7 +14,11 @@
 		 	<image  src="../../static/hand_tap.png" style="width: 50px; height: 90upx;" ></image>
 		 </view>
 		 
-		 <view class=" justify-center">
+		 <view class="flex justify-center" style="margin-top: -60upx; width:100%;">
+		 	<image  src="../../static/team_text.png" style="height: 350upx;" mode="aspectFit"></image>
+		 </view>
+		 
+		 <!-- <view class=" justify-center">
 			<view class="flex padding-right padding-left-xl" style="margin-top: 160upx;">
 				<view style="background-color: #ffffff; width: 10upx; height: 200upx;"></view>
 				<view class="margin-left-sm">
@@ -26,7 +34,7 @@
 				 </view>
 			</view>
 		 			
-		 </view>
+		 </view> -->
 	</view> 
 </template>
 
