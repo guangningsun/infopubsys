@@ -1,8 +1,11 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
-			<block slot="content">团队详情</block>
-		</cu-custom>
+		<view class="fixed">
+			<cu-custom :isBack="true" bgColor="bg-shadeTop text-white">
+				<block slot="backText">返回</block>
+				<block slot="content">团队详情</block>
+			</cu-custom>
+		</view>
 
 		<view class="cu-card article">
 			<view class="cu-item shadow">

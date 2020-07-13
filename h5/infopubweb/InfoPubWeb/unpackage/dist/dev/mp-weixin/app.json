@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/service_team",
+    "pages/service_team_list/service_team_list",
+    "pages/service_team_list/service_team_detail",
+    "pages/invest/invest_index",
+    "pages/invest/apart_building_factory_index",
+    "pages/invest/apart_building_detail",
+    "pages/invest/factory_detail",
+    "pages/invest/external_link"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "TEDA",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationStyle": "custom",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,8 +1,11 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-purple2" :isBack="true">
-			<block slot="content"></block>
-		</cu-custom>
+		<view class="fixed">
+			<cu-custom :isBack="true" bgColor="bg-shadeTop text-white">
+				<block slot="backText">返回</block>
+				<block slot="content"></block>
+			</cu-custom>
+		</view>
 		
 		<view v-show="showLoading" id="loading" class="bg-white flex-sub radius shadow-lg">
 			<image src="../../static/loading-white.gif" mode="aspectFit" class="gif-white response" style="height:240upx"></image>

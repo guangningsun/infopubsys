@@ -1,0 +1,13 @@
+
+.fixed {
+	position: fixed;
+	z-index: 99;
+}
+.VerticalMain {
+	background-color: #f1f1f1;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+}
+
+
